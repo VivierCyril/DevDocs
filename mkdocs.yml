@@ -1,0 +1,21 @@
+site_name: Dev Docs
+nav:
+  - Accueil: 
+    - index.md
+  - Les langages :
+    - HTML: 
+      - HTML/index.md
+    - CSS: 
+      - CSS/index.md
+    - JS: 
+      - base: JS/index.md
+      - avancé: JS/javascript/avancee.md
+  - A propos: 
+    - about.md
+
+theme:
+  name: readthedocs
+  highlightjs: true
+  hljs_languages:
+    - yaml
+  locale: fr
