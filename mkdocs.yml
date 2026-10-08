@@ -1,5 +1,5 @@
 site_name: Dev Docs
-repo_url: https://github.com/VivierCyril/DevDocs
+# repo_url: https://github.com/VivierCyril/DevDocs
 repo_name: "Github"
 site_description: Cours et documentation des technologies informtique
 site_author: Vivier Cyril
@@ -15,24 +15,96 @@ use_directory_urls: true
 # Défini le dossier
 docs_dir: docs
 
+# Navigations
 nav:
-  - Accueil:
-      - index.md
+  - Accueil: index.md
   - Les langages:
-      - HTML:
-          - HTML/index.md
-      - CSS:
-          - CSS/index.md
-      - JS:
-          - base: JS/index.md
-          - avancé: JS/javascript/avancee.md
+      - Front-End:
+          - HTML:
+              - Les base: Front/html/index.md
+              - Les formulaires:
+                  - Les inputs: Front/html/formulaire.md
+          - CSS:
+              - Front/css/index.md
+          - JS:
+              - base: Front/js/index.md
+              - Notions Avancée:
+                  - Les évolutions de la syntaxe depuis ES5: Front/js/avancee.md
+      - Back-end:
+          - PHP: Back/php/index.md
+          - SQL: Back/sql/index.md
+  - Utilitaire:
+      - Git: Utilitaire/git/index.md
+
   - A propos:
-      - License: license.md
+      - License: license
       - Release Notes: release-notes.md
 
+# Theme
 theme:
-  name: readthedocs
+  name: material
   highlightjs: true
   hljs_languages:
     - yaml
+    - rust
   locale: fr
+  palette:
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+
+# Extensions
+markdown_extensions:
+  - admonition # Encadrés (note, tip, warning...)
+  - pymdownx.details # Encadrés dépliables
+  - pymdownx.superfences: # Blocs de code avancés
+      custom_fences:
+        - name: mermaid # Diagrammes Mermaid
+          class: mermaid
+  - pymdownx.tabbed: # Onglets de contenu
+      alternate_style: true
+  - pymdownx.highlight: # Coloration syntaxique
+      anchor_linenums: true
+      line_spans: __span
+      linenums: true
+      pygments_lang_class: true
+  - pymdownx.inlinehilite # Code inline coloré
+  - pymdownx.snippets # Inclusion de fichiers
+  - pymdownx.emoji: # Emojis et icônes
+  - attr_list # Attributs HTML sur éléments
+  - md_in_html # Markdown dans le HTML
+  - tables # Tableaux
+  - footnotes # Notes de bas de page
+  - pymdownx.critic # Suivi des modifications
+  - pymdownx.caret # Superscript et insertion
+  - pymdownx.keys # Raccourcis clavier
+  - pymdownx.mark # Surlignage de texte
+  - pymdownx.tilde # Subscript et barré
+  - toc: # Table des matières
+      permalink: true
+  - pymdownx.tasklist: # Listes de tâches
+      custom_checkbox: true
+  - def_list # Listes de définitions
+  - abbr
+  - pymdownx.snippets:
+      auto_append:
+        - includes/abbreviations.md
+
+watch:
+  - includes

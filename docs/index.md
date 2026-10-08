@@ -17,14 +17,46 @@ For full documentation visit [mkdocs.org](https://www.mkdocs.org).
 * `mkdocs build` - Build the documentation site.
 * `mkdocs -h` - Print help message and exit.
 
-## Project layout
+## Liste des formations
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+<!-- ### Front-end
 
-## Liste des dormations
+* [HTML](Front/html/index.md)
+* [CSS](Front/css/index.md)
+* [JS](Front/javascript/index.md)
+  
+### Back-end
 
-* [HTML](HTML/index.md)
-* [CSS](CSS/index.md)
+* [PHP](Back/php/index.md)
+* [SQL](back/sql/index.md)
+
+### Utilisataire 
+
+* [Git](utilitaire/git/index.md) -->
+ 
+<div class="grid cards" markdown>
+
+- **Front-end**
+  
+    ---
+
+    Démarrer votre formation Front-end
+
+    [Commencer](Front/html/index.md)
+
+-   **Back-end**
+
+    ---
+
+    Démarrer votre formation Back-end
+
+    [Commencer](Back/php/index.md)
+
+-   **Utilisataire**
+
+    ---
+
+    Démarrer votre formation sur les utilitaires de développement
+
+    [Commencer](Utilitaire/git/index.md)
+</div>

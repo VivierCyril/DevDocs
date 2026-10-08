@@ -15,11 +15,11 @@ Dans cet article
 
 Nos modules de base pour apprendre le développement web proposent des tutoriels modernes et à jour couvrant les fondamentaux de HTML.
 
-[Votre premier site web : création du contenu]()
+Votre premier site web : création du contenu
 
 Cet article propose une brève introduction à ce qu'est HTML et à son utilisation, destiné aux personnes totalement débutantes en développement web.
 
-[Structurer le contenu avec HTML]()
+Structurer le contenu avec HTML
 
 Ce module aborde les bases du langage HTML, puis les domaines clés comme la structure des documents, les liens, les listes, les images, les formulaires et plus encore.
 
