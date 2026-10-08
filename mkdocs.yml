@@ -1,4 +1,4 @@
-# Configuration du site
+ # Métadonnées du site
 site_name: Dev Docs
 # repo_url: https://github.com/VivierCyril/DevDocs
 repo_name: "Github"
@@ -8,7 +8,7 @@ remote_branch: main
 remote_name: origin
 
 # Permet de mettre un projet en construction
-# draft_docs: HTML/
+draft_docs: Utilitaire/mkdocs/index.md
 
 # Utilise les lien URL sans extension
 use_directory_urls: true
@@ -18,93 +18,117 @@ docs_dir: docs
 
 # Navigations
 nav:
-  - Accueil: index.md
+      - Accueil: index.md
 
-  - Les langages:
       - Front-End:
-          - HTML:
-              - Les base: Front/html/index.md
-              - Les formulaires:
-                  - Les inputs: Front/html/formulaire.md
-          - CSS:
-              - Front/css/index.md
-          - JS:
-              - base: Front/javascript/index.md
-              - Notions Avancée:
-                  - Les évolutions de la syntaxe depuis ES5: Front/javascript/avancee.md
+            - HTML:
+                  - Les Base: Front/html/index.md
+                  - Les Formulaires:
+                        - Les Inputs: Front/html/formulaire.md
+            - CSS:
+                  - Front/css/index.md
+            - JS:
+                  - Les Bases: Front/javascript/index.md
+                  - Notions Avancée:
+                        - Les évolutions de la syntaxe depuis ES5: Front/javascript/avancee.md
       - Back-end:
-          - PHP: Back/php/index.md
-          - SQL: Back/sql/index.md
-  - Utilitaire:
-      - Mkdocs: Utilitaire/mkdocs/index.md
-      - Git: Utilitaire/git/index.md
+            - PHP: Back/php/index.md
+            - SQL: Back/sql/index.md
+            - Symfony: Back/symfony/index.md
+      - Utilitaire:
+            - Mkdocs: Utilitaire/mkdocs/index.md
+            - Git: Utilitaire/git/index.md
 
-  - A propos:
-      - License: license
-      - Release Notes: release-notes.md
+      - A propos:
+            - License: license
+            - Release Notes: release-notes.md
 
-# Theme
+# Thème Material
 theme:
-  name: material
-  highlightjs: true
-  locale: fr
-  palette:
-    # Palette toggle for automatic mode
-    - media: "(prefers-color-scheme)"
-      toggle:
-        icon: material/brightness-auto
-        name: Switch to light mode
+      name: material
+      features:
+            - navigation.instant          # Navigation instantanée (fetch + replace)
+            - navigation.instant.prefetch # Préchargement des pages au survol
+            - navigation.tracking         # URL reflète la section visible
+            # - navigation.tabs           # Onglets de navigation principaux
+            - navigation.sections         # Sections dans la sidebar
+            # - navigation.top            # Bouton retour en haut
+            # - navigation.indexes        # Pages d'index de section
+            - search.suggest              # Suggestions de recherche
+            - search.highlight            # Surlignage des résultats
+            - content.code.copy           # Bouton copier sur les blocs de code
+            - content.code.annotate       # Annotations dans le code
+            - content.code.select         # Sélection du code
+            - content.tabs.link           # Onglets liés entre sections
+            - content.tooltips            # Tooltips améliorés sur les liens
+            - toc.follow                  # Table des matières suit le scroll
+      highlightjs: true
+      locale: fr
+      palette:
+            # Palette toggle for automatic mode
+            - media: "(prefers-color-scheme)"
+              scheme: default
+              toggle:
+                    icon: material/brightness-auto
+                    name: Switch to light mode
 
-    # Palette toggle for light mode
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
+            # Palette toggle for light mode
+            - media: "(prefers-color-scheme: light)"
+              schema: slate
+              toggle:
+                    icon: material/brightness-7
+                    name: Switch to dark mode
 
-    # Palette toggle for dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      toggle:
-        icon: material/brightness-4
-        name: Switch to system preference
+            # Palette toggle for dark mode
+            - media: "(prefers-color-scheme: dark)"
+              scheme: slate
+              toggle:
+                    icon: material/brightness-4
+                    name: Switch to system preference
+
+# Plugins
+plugins:
+  - search:
+      lang: fr                      # Recherche en français
+  - tags                            # Système de tags
+  - privacy
 
 # Extensions
 markdown_extensions:
-  - admonition # Encadrés (note, tip, warning...)
-  - pymdownx.details # Encadrés dépliables
-  - pymdownx.superfences: # Blocs de code avancés
-      custom_fences:
-        - name: mermaid # Diagrammes Mermaid
-          class: mermaid
-  - pymdownx.tabbed: # Onglets de contenu
-      alternate_style: true
-  - pymdownx.highlight: # Coloration syntaxique
-      anchor_linenums: true
-      line_spans: __span
-      linenums: true
-      pygments_lang_class: true
-  - pymdownx.inlinehilite # Code inline coloré
-  - pymdownx.snippets # Inclusion de fichiers
-  - pymdownx.emoji: # Emojis et icônes
-  - attr_list # Attributs HTML sur éléments
-  - md_in_html # Markdown dans le HTML
-  - tables # Tableaux
-  - footnotes # Notes de bas de page
-  - pymdownx.critic # Suivi des modifications
-  - pymdownx.caret # Superscript et insertion
-  - pymdownx.keys # Raccourcis clavier
-  - pymdownx.mark # Surlignage de texte
-  - pymdownx.tilde # Subscript et barré
-  - toc: # Table des matières
-      permalink: true
-  - pymdownx.tasklist: # Listes de tâches
-      custom_checkbox: true
-  - def_list # Listes de définitions
-  - abbr
-  - pymdownx.snippets:
-      auto_append:
-        - includes/abbreviations.md
+      - admonition                  # Encadrés (note, tip, warning...)
+      - pymdownx.details            # Encadrés dépliables
+      - pymdownx.superfences:       # Blocs de code avancés
+              custom_fences:
+                    - name: mermaid # Diagrammes Mermaid
+                      class: mermaid
+      - pymdownx.tabbed:            # Onglets de contenu
+              alternate_style: true
+      - pymdownx.highlight:         # Coloration syntaxique
+              anchor_linenums: true
+              line_spans: __span
+              linenums: true
+              pygments_lang_class: true
+      - pymdownx.inlinehilite       # Code inline coloré
+      - pymdownx.snippets           # Inclusion de fichiers
+      - pymdownx.emoji:             # Emojis et icônes
+      - attr_list                   # Attributs HTML sur éléments
+      - md_in_html                  # Markdown dans le HTML
+      - tables                      # Tableaux
+      - footnotes                   # Notes de bas de page
+      - pymdownx.critic             # Suivi des modifications
+      - pymdownx.caret              # Superscript et insertion
+      - pymdownx.keys               # Raccourcis clavier
+      - pymdownx.mark               # Surlignage de texte
+      - pymdownx.tilde              # Subscript et barré
+      - toc:                        # Table des matières
+              permalink: true
+      - pymdownx.tasklist:          # Listes de tâches
+              custom_checkbox: true
+      - def_list                    # Listes de définitions
+      - abbr
+      - pymdownx.snippets:
+              auto_append:
+                    - includes/abreviations/abreviations.md
 
 watch:
-  - includes
+      - includes
