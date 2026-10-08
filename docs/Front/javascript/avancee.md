@@ -61,7 +61,7 @@ Important
 Pour tout nouveau code, il est recommandé d’utiliser let pour déclarer toutes les variables.
 
 Avec ES6, on dispose également du mot-clè const pour garantir que la déclaration est constante.
-```javascript
+
 const pi = 3.1416;
 
 La structure for … of (ES6)
