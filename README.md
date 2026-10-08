@@ -4,6 +4,22 @@
 
 Mettre en place une documentation claire et simple pour les futurs stagaires sur les formation CDA/DWWM
 
+## Commands
+
+Sous Linux
+
+* `mkdocs new [dir-name]` - Create a new project.
+* `mkdocs serve` - Start the live-reloading docs server.
+* `mkdocs build` - Build the documentation site.
+* `mkdocs -h` - Print help message and exit.
+
+Sous Windows
+
+* `py -m mkdocs new [dir-name]` - Create a new project.
+* `py -m mkdocs serve` - Start the live-reloading docs server.
+* `py -m mkdocs build` - Build the documentation site.
+* `py -m mkdocs -h` - Print help message and exit.
+
 ## Thème
 
 [mkdocs-material](https://squidfunk.github.io/mkdocs-material/)
