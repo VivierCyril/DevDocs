@@ -8,23 +8,48 @@ date: 2026-07-10
 
 # Bienvenue sur Dev Docs
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+<!-- For full documentation visit [mkdocs.org](https://www.mkdocs.org). -->
 
-## Commands
+## Liste des formations
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+<!-- ### Front-end
 
-## Project layout
+* [HTML](Front/html/index.md)
+* [CSS](Front/css/index.md)
+* [JS](Front/javascript/index.md)
+  
+### Back-end
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+* [PHP](Back/php/index.md)
+* [SQL](back/sql/index.md)
 
-## Liste des dormations
+### Utilisataire 
 
-* [HTML](HTML/index.md)
-* [CSS](CSS/index.md)
+* [Git](utilitaire/git/index.md) -->
+ 
+<div class="grid cards" markdown>
+
+- **Front-end**
+  
+    ---
+
+    Démarrer votre formation Front-end
+
+    [Commencer](Front/html/index.md)
+
+-   **Back-end**
+
+    ---
+
+    Démarrer votre formation Back-end
+
+    [Commencer](Back/php/index.md)
+
+-   **Utilitaire**
+
+    ---
+
+    Démarrer votre formation sur les utilitaires de développement
+
+    [Commencer](Utilitaire/git/index.md)
+</div>

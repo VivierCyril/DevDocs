@@ -1,21 +1,137 @@
+ # Métadonnées du site
 site_name: Dev Docs
-nav:
-  - Accueil: 
-    - index.md
-  - Les langages :
-    - HTML: 
-      - HTML/index.md
-    - CSS: 
-      - CSS/index.md
-    - JS: 
-      - base: JS/index.md
-      - avancé: JS/javascript/avancee.md
-  - A propos: 
-    - about.md
+# repo_url: https://github.com/VivierCyril/DevDocs
+repo_name: "Github"
+site_description: Cours et documentation des technologies informtique
+site_author: Vivier Cyril
+remote_branch: main
+remote_name: origin
 
+# Permet de mettre un projet en construction
+draft_docs: draft/*
+
+# Utilise les lien URL sans extension
+use_directory_urls: true
+
+# Défini le dossier
+docs_dir: docs
+
+# Navigations
+nav:
+      - Accueil: index.md
+
+      - Front-End:
+            - HTML:
+                  - Les Base: Front/html/index.md
+                  - Les Formulaires:
+                        - Les Inputs: Front/html/formulaire.md
+            - CSS:
+                  - Front/css/index.md
+            - JS:
+                  - Les Bases: Front/javascript/index.md
+                  - Notions Avancée:
+                        - Les évolutions de la syntaxe depuis ES5: Front/javascript/avancee.md
+      - Back-end:
+            - PHP: Back/php/index.md
+            - SQL: Back/sql/index.md
+            - Symfony: Back/symfony/index.md
+      - Utilitaire:
+            - Mkdocs: Utilitaire/mkdocs/index.md
+            - Git: Utilitaire/git/index.md
+
+      - A propos:
+            - Release Notes: release-notes.md
+
+extra_css: [assets/css/style.css]
+
+# Thème Material
 theme:
-  name: readthedocs
-  highlightjs: true
-  hljs_languages:
-    - yaml
-  locale: fr
+      name: material
+      features:
+            - navigation.instant          # Navigation instantanée (fetch + replace)
+            - navigation.instant.prefetch # Préchargement des pages au survol
+            - navigation.tracking         # URL reflète la section visible
+            # - navigation.tabs           # Onglets de navigation principaux
+            - navigation.sections         # Sections dans la sidebar
+            # - navigation.top            # Bouton retour en haut
+            # - navigation.indexes        # Pages d'index de section
+            - search.suggest              # Suggestions de recherche
+            - search.highlight            # Surlignage des résultats
+            - content.code.copy           # Bouton copier sur les blocs de code
+            - content.code.annotate       # Annotations dans le code
+            - content.code.select         # Sélection du code
+            - content.tabs.link           # Onglets liés entre sections
+            - content.tooltips            # Tooltips améliorés sur les liens
+            - toc.follow                  # Table des matières suit le scroll
+      highlightjs: true
+      locale: fr
+      palette:
+            # Palette toggle for automatic mode
+            - media: "(prefers-color-scheme)"
+              scheme: default
+              toggle:
+                    icon: material/brightness-auto
+                    name: Switch to light mode
+
+            # Palette toggle for light mode
+            - media: "(prefers-color-scheme: light)"
+              schema: slate
+              toggle:
+                    icon: material/brightness-7
+                    name: Switch to dark mode
+
+            # Palette toggle for dark mode
+            - media: "(prefers-color-scheme: dark)"
+              scheme: slate
+              toggle:
+                    icon: material/brightness-4
+                    name: Switch to system preference
+
+# Plugins
+plugins:
+  - search:
+      lang: fr                      # Recherche en français
+  - tags                            # Système de tags
+  - privacy
+
+# Extensions
+markdown_extensions:
+      - admonition                  # Encadrés (note, tip, warning...)
+      - pymdownx.details            # Encadrés dépliables
+      - pymdownx.superfences:       # Blocs de code avancés
+              custom_fences:
+                    - name: mermaid # Diagrammes Mermaid
+                      class: mermaid
+      - pymdownx.tabbed:            # Onglets de contenu
+              alternate_style: true
+      - pymdownx.highlight:         # Coloration syntaxique
+              anchor_linenums: true
+              line_spans: __span
+              linenums: true
+              pygments_lang_class: true
+      - pymdownx.inlinehilite       # Code inline coloré
+      - pymdownx.snippets           # Inclusion de fichiers
+      - pymdownx.emoji:             # Emojis et icônes
+            emoji_index: !!python/name:material.extensions.emoji.twemoji
+            emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      - attr_list                   # Attributs HTML sur éléments
+      - md_in_html                  # Markdown dans le HTML
+      - tables                      # Tableaux
+      - footnotes                   # Notes de bas de page
+      - pymdownx.critic             # Suivi des modifications
+      - pymdownx.caret              # Superscript et insertion
+      - pymdownx.keys               # Raccourcis clavier
+      - pymdownx.mark               # Surlignage de texte
+      - pymdownx.tilde              # Subscript et barré
+      - toc:                        # Table des matières
+              permalink: true
+      - pymdownx.tasklist:          # Listes de tâches
+              custom_checkbox: true
+      - def_list                    # Listes de définitions
+      - abbr
+      - pymdownx.snippets:
+              auto_append:
+                    - includes/abreviations/abreviations.md
+
+watch:
+      - includes
