@@ -8,7 +8,7 @@ remote_branch: main
 remote_name: origin
 
 # Permet de mettre un projet en construction
-draft_docs: Utilitaire/mkdocs/index.md
+draft_docs: draft/*
 
 # Utilise les lien URL sans extension
 use_directory_urls: true
@@ -40,8 +40,9 @@ nav:
             - Git: Utilitaire/git/index.md
 
       - A propos:
-            - License: license
             - Release Notes: release-notes.md
+
+extra_css: [assets/css/style.css]
 
 # Thème Material
 theme:
@@ -111,6 +112,8 @@ markdown_extensions:
       - pymdownx.inlinehilite       # Code inline coloré
       - pymdownx.snippets           # Inclusion de fichiers
       - pymdownx.emoji:             # Emojis et icônes
+            emoji_index: !!python/name:material.extensions.emoji.twemoji
+            emoji_generator: !!python/name:material.extensions.emoji.to_svg
       - attr_list                   # Attributs HTML sur éléments
       - md_in_html                  # Markdown dans le HTML
       - tables                      # Tableaux

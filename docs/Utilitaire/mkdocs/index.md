@@ -430,11 +430,284 @@ MkDocs génère des sites statiques[^1] à partir de Markdown.
 [^1]: Un site statique est composé uniquement de fichiers HTML, CSS
     et JavaScript, sans base de données ni serveur applicatif.
 ```
-
-
-
 MkDocs génère des sites statiques[^1] à partir de Markdown.
 
 [^1]: Un site statique est composé uniquement de fichiers HTML, CSS
     et JavaScript, sans base de données ni serveur applicatif.
 
+### Grilles et cartes
+
+Les **grilles** (grids) permettent d'organiser le contenu en cartes visuelles, parfaites pour les pages d'index ou les listes de fonctionnalités. Elles nécessitent les extensions `attr_list` et `md_in_html` (déjà incluses dans la configuration ci-dessus).
+
+```markdown linenums="0"
+<div class="grid cards" markdown>
+
+-   :material-clock-fast: **Mise en place en 5 minutes**
+
+    ---
+
+    Installez `mkdocs-material` avec `pip` et démarrez en quelques minutes.
+
+    [:octicons-arrow-right-24: Commencer](#)
+
+-   :fontawesome-brands-markdown: **C'est juste du Markdown**
+
+    ---
+
+    Concentrez-vous sur le contenu, Material génère le site.
+
+    [:octicons-arrow-right-24: Référence](#)
+
+</div>
+```
+
+Chaque élément de la liste devient une **carte avec effet de survol**. On peut mélanger des icônes, du Markdown et des liens dans chaque carte.
+
+<div class="grid cards" markdown>
+
+-   :material-clock-fast: **Mise en place en 5 minutes**
+
+    ---
+
+    Installez `mkdocs-material` avec `pip` et démarrez en quelques minutes.
+
+    [:octicons-arrow-right-24: Commencer](#)
+
+-   :fontawesome-brands-markdown: **C'est juste du Markdown**
+
+    ---
+
+    Concentrez-vous sur le contenu, Material génère le site.
+
+    [:octicons-arrow-right-24: Référence](#)
+
+</div>
+
+
+### Icônes et emojis
+
+Material for MkDocs donne accès à **plus de 10 000 icônes** (Material Design, FontAwesome, Octicons, Simple Icons) et des milliers d'emojis via une syntaxe simple. Ils sont activés par l'extension `pymdownx.emoji` (déjà dans la configuration).
+
+??? exemple "Exemple d'émoji"
+    ```
+    :material-account-circle: Profil utilisateur
+    :fontawesome-brands-docker: Conteneur Docker
+    :octicons-terminal-24: Terminal
+    :smile: Emoji sourire
+    ```
+    :material-account-circle: Profil utilisateur <br>
+    :fontawesome-brands-docker: Conteneur Docker <br>
+    :octicons-terminal-24: Terminal <br>
+    :smile: Emoji sourire
+
+Les icônes sont utilisables dans les **titres**, les **admonitions**, les **boutons** et les **cartes de grille**. On peut aussi leur ajouter des couleurs et des animations avec des classes CSS personnalisées.
+
+### Tooltips et glossaire
+
+Les **abréviations** créent des info-bulles automatiques au survol d'un terme. Activez `content.tooltips` dans les features du thème pour un rendu amélioré.
+
+??? exemple "Exemple de glossaire"
+    ```text
+    Le HTML est le langage de base du web. Le W3C en maintient la spécification.
+
+    *[HTML]: Hyper Text Markup Language
+    *[W3C]: World Wide Web Consortium
+    ```
+
+Pour créer un **glossaire global** (défini une seule fois, appliqué sur toutes les pages), on place les abréviations dans un fichier dédié et on utilise l'extension `pymdownx.snippets` avec `auto_append` :
+
+
+
+```title="mkdocs.yml (extrait)"
+markdown_extensions:
+  - abbr
+  - pymdownx.snippets:
+      auto_append:
+        - includes/abbreviations.md
+
+watch:
+  - includes
+```
+
+```title="includes/abbreviations.md"
+*[SSG]: Static Site Generator, générateur de site statique
+*[CI/CD]: Continuous Integration / Continuous Delivery
+*[RBAC]: Role-Based Access Control
+```
+
+Chaque occurrence de ces termes dans **toute la documentation** affichera automatiquement une info-bulle avec la définition.
+
+### Formatage avancé
+
+Material supporte le **surlignage**, les **raccourcis clavier**, les sub/superscripts et le **suivi des modifications** (Critic Markup) via les extensions `pymdownx.critic`, `pymdownx.caret`, `pymdownx.keys`, `pymdownx.mark` et `pymdownx.tilde`.
+
+??? exemeple "Exemple de formatage"
+    - ==Texte surligné== avec `pymdownx.mark`  <br>
+    - ^^Texte souligné (insertion)^^ avec `pymdownx.caret` <br>
+    - ~~Texte barré (suppression)~~ avec `pymdownx.tilde` <br>
+    - H~2~O (subscript) et A^T^A (superscript) <br>
+    - Raccourci clavier : ++ctrl+alt+del++ <br>
+    - Suivi : {--texte supprimé--} et {++texte ajouté++}
+
+
+| Syntaxe | Rendu | Extension |
+| --- | --- | --- |
+| `==surligné==` | Surbrillance jaune | `pymdownx.mark` |
+| `^^souligné^^` | Souligné (insertion) | `pymdownx.caret` |
+| `~~barré~~` | Barré (suppression) | `pymdownx.tilde` |
+| `H~2~O` | Subscript | `pymdownx.tilde` |
+| `A^T^A` | Superscript | `pymdownx.caret` |
+| `++ctrl+s++` | Touche clavier stylisée | `pymdownx.keys` |
+
+### Boutons
+
+N'importe quel lien peut être transformé en **bouton** grâce à l'extension `attr_list` et la classe CSS `.md-button` :
+
+??? exemple "Boutons"
+    ```
+    [Commencer le tutoriel](#){ .md-button }
+    [Télécharger :fontawesome-solid-download:](#){ .md-button .md-button--primary }
+    ```
+    [Commencer le tutoriel](#){ .md-button }
+    [Télécharger :fontawesome-solid-download:](#){ .md-button .md-button--primary }
+
+La classe `.md-button--primary` donne un bouton rempli avec la couleur principale du thème. On peut aussi ajouter des icônes dans le texte du bouton.
+
+### Images avancées
+
+Material étend la gestion des images avec l'**alignement**, les **légendes**, le **chargement différé** et le support **clair/sombre**.
+
+```linenums="0"
+![Architecture](images/archi.png){ align=left width="300" loading=lazy }
+```
+
+| Attribut | Effet |
+| --- | --- |
+| `align=left` | Image flottante à gauche |
+| `align=right` | Image flottante à droite |
+| `width="300"` | Largeur en pixels |
+| `loading=lazy` | Chargement différé (performance) |
+
+Pour ajouter une **légende** :
+
+```
+<figure markdown="span">
+  ![Architecture du pipeline](images/pipeline.png){ width="600" }
+  <figcaption>Architecture du pipeline CI/CD</figcaption>
+</figure>
+```
+Pour afficher une **image différente selon le mode clair/sombre**, ajoutez un fragment `#only-light` ou `#only-dark` à l'URL :
+
+```
+![Schéma](images/schema-light.png#only-light)
+![Schéma](images/schema-dark.png#only-dark)
+```
+Pour le **zoom au clic** (lightbox), installez le plugin [`glightbox`](https://github.com/blueswen/mkdocs-glightbox) :
+
+```title="Fenêtre de terminal"
+pip install mkdocs-glightbox
+```
+```title="mkdocs.yml (extrait)"
+plugins:
+  - glightbox
+```
+
+## Builder et prévisualiser le site
+
+MkDocs propose deux commandes principales pour travailler avec le contenu.
+
+### Serveur de développement
+
+```title="Fenêtre de terminal" linenums="0"
+py -m mkdocs serve
+```
+Le serveur démarre sur **<http://localhost:8000>** avec le **live reload** activé. À chaque sauvegarde d'un fichier, la page se recharge automatiquement.
+
+Options utiles :
+
+| Option | Effet |
+| --- | --- |
+| `-a localhost:8001` | Change le port d'écoute |
+| `--dirty` | Ne regénère que les fichiers modifiés (plus rapide) |
+| `--strict` | Transforme les warnings en erreurs (recommandé en CI) |
+| `-w docs/ -w includes/` | Surveille des dossiers supplémentaires |
+
+### Build de production
+
+```title="Fenêtre de terminal"
+mkdocs build --strict
+```
+
+Le site complet est généré dans le dossier `site/`. L'option `--strict` est recommandée car elle détecte les liens cassés, les fichiers manquants et les erreurs de configuration.
+
+**Vérification :** après le build, le dossier `site/` contient les fichiers HTML, CSS, JS et les assets. On peut les servir avec n'importe quel serveur web statique.
+
+!!! tip "AJOUTEZ SITE/ AU .GITIGNORE"
+    Le dossier `site/` ne dois **pas** être versionné. Il est regeneré à chauqe build. Ajoutez-le à votre `.gitignore` :
+    ```
+    site/
+    ```
+
+## Plugins utiles
+
+Material for MkDocs 9.7 inclut plusieurs plugins intégrés. D'autres plugins communautaires enrichissent encore les possibilités.
+
+| Plugin | Usage | Installation |
+| --- | --- | --- |
+| `search` | Recherche full-text côté client | Inclus |
+| `tags` | Catégoriser les pages avec des tags | Inclus dans Material |
+| `blog` | Ajouter un blog à côté de la doc | Inclus dans Material |
+| `social` | Générer des images de partage social | Inclus dans Material |
+| `privacy` | Conformité RGPD (pas de requêtes externes) | Inclus dans Material |
+| [`mkdocs-redirects`](https://github.com/mkdocs/mkdocs-redirects) | Gérer les redirections d'URL | `pip install mkdocs-redirects` |
+| [`mkdocs-minify-plugin`](https://github.com/byrnereese/mkdocs-minify-plugin) | Minifier le HTML/CSS/JS généré | `pip install mkdocs-minify-plugin` |
+| [`mkdocs-git-revision-date-localized-plugin`](https://github.com/timvink/mkdocs-git-revision-date-localized-plugin) | Afficher la date de dernière modification | `pip install mkdocs-git-revision-date-localized-plugin` |
+
+### Redirections avec mkdocs-redirects
+
+Quand on **renomme** ou **déplace** une page, les anciens liens (favoris, runbooks internes, références depuis d'autres outils) renvoient une 404. Le plugin `mkdocs-redirects` résout ce problème en générant des pages de redirection HTML :
+
+```title="mkdocs.yml (extrait)"
+plugins:
+  - redirects:
+      redirect_maps:
+        'ancien-chemin/page.md': 'nouveau-chemin/page.md'
+        'guide/install.md': 'guide/installation.md'
+        'runbooks/rollback-v1.md': 'runbooks/rollback.md'
+```
+
+**Règle** : chaque renommage de fichier dans `docs/` doit s'accompagner d'une entrée dans `redirect_maps`. C'est vital pour éviter les 404 dans les runbooks.
+
+Exemple d'activation dans `mkdocs.yml` :
+
+```title="mkdocs.yml (extrait)"
+plugins:
+  - search:
+      lang: fr
+  - tags
+  - blog
+  - social
+  - privacy
+```
+
+## À retenir
+
+* [**MkDocs**](https://www.mkdocs.org/) génère un site statique à partir de fichiers Markdown et d'un seul fichier de configuration YAML (`mkdocs.yml`).
+* [**Material for MkDocs 9.7.7**](https://squidfunk.github.io/mkdocs-material/) est le thème de référence : mode sombre, recherche, admonitions, annotations de code, diagrammes Mermaid. Depuis la 9.7.0, toutes les fonctionnalités Insiders sont gratuites.
+* **Verrouillez vos dépendances** avec `requirements.txt` pour des builds reproductibles en équipe et en CI.
+* Les fonctionnalités essentielles (**admonitions**, **onglets**, **code annoté**, **Mermaid**) couvrent 90% des besoins d'une doc technique. Les grilles, tooltips, formatage avancé et boutons complètent au fil des besoins.
+* `mkdocs serve` pour la prévisualisation locale, `mkdocs build --strict` pour la production (détecte liens cassés et erreurs de configuration).
+* Le déploiement sur **GitHub Pages** se résume à `mkdocs gh-deploy` (branche `gh-pages`) ou à un workflow CI/CD. Protégez vos branches et installez depuis `requirements.txt`.
+* Utilisez **mkdocs-redirects** à chaque renommage de page pour éviter les 404 dans les runbooks et préserver le SEO.
+* **Material for MkDocs a une fin de vie annoncée au 5 mai 2027**, correctifs de sécurité compris. Rien ne presse pour un site existant, mais un projet démarré aujourd'hui doit porter la migration à son plan.
+* **Material ne fonctionne pas avec MkDocs 2.0** : le paquet déclare `mkdocs<2,>=1.6`, et la 2.0 n'existe de toute façon qu'en pré-version.
+* Le successeur [**Zensical**](https://zensical.org/) est publié en **0.0.63** : bon pour évaluer sur une copie, pas encore pour remplacer sans regarder.
+
+## Plus d'infos
+
+* **Documentation officielle MkDocs** : [mkdocs.org](https://www.mkdocs.org/)
+* **Documentation Material for MkDocs** : [squidfunk.github.io/mkdocs-material](https://squidfunk.github.io/mkdocs-material/)
+* **Dépôt GitHub MkDocs** : [github.com/mkdocs/mkdocs](https://github.com/mkdocs/mkdocs)
+* **Dépôt GitHub Material** : [github.com/squidfunk/mkdocs-material](https://github.com/squidfunk/mkdocs-material)
+* **Changelog Material** : [squidfunk.github.io/mkdocs-material/changelog](https://squidfunk.github.io/mkdocs-material/changelog/)
+* **Zensical** (successeur en cours) : [zensical.org](https://zensical.org/)
