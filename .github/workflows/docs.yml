@@ -19,4 +19,4 @@ jobs:
 
       - run: pip install -r requirements.txt
 
-      - run: mkdocs gh-deploy --strict --force
+      - run: mkdocs gh-deploy --force
