@@ -1,0 +1,2641 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Installez MkDocs et Material, configurez un projet complet, personnalisez le thème et déployez votre documentation technique sur GitHub Pages ou GitLab Pages.">
+      
+      
+        <meta name="author" content="Vivier Cyril">
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>MkDocs : créer un site de documentation - Dev Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        
+        <link rel="stylesheet" href="../../../assets/external/fonts.googleapis.com/css.49ea35f2.css">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/css/style.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mkdocs-creer-un-site-de-documentation-devops" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Dev Docs" class="md-header__button md-logo" aria-label="Dev Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Dev Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              MkDocs : créer un site de documentation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Dev Docs" class="md-nav__button md-logo" aria-label="Dev Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Dev Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Accueil
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Front-End
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Front-End
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HTML
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    HTML
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Front/html/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Les Base
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_2" id="__nav_2_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Les Formulaires
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Les Formulaires
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Front/html/formulaire/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Les Inputs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CSS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CSS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Front/css/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CSS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    JS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Front/javascript/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Les Bases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_2" id="__nav_2_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Notions Avancée
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Notions Avancée
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Front/javascript/avancee/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Les évolutions de la syntaxe depuis ES5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Back-end
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Back-end
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Back/php/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PHP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Back/sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Back/symfony/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Symfony
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Utilitaire
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Utilitaire
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mkdocs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A propos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    A propos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../release-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Release Notes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quest-ce-que-mkdocs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qu'est-ce que MkDocs ?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prérequis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creer-un-projet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Créer un projet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-complete-avec-material" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration complète avec Material
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#organiser-le-contenu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Organiser le contenu
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rediger-du-contenu-enrichi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rédiger du contenu enrichi
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Rédiger du contenu enrichi">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#admonitions-encadres" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Admonitions (encadrés)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#onglets-de-contenu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Onglets de contenu
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blocs-de-code-avances" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Blocs de code avancés
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagrammes-mermaid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagrammes Mermaid
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listes-de-taches-et-notes-de-bas-de-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Listes de tâches et notes de bas de page
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grilles-et-cartes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Grilles et cartes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#icones-et-emojis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Icônes et emojis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tooltips-et-glossaire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tooltips et glossaire
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formatage-avance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Formatage avancé
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boutons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boutons
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#images-avancees" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Images avancées
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#builder-et-previsualiser-le-site" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Builder et prévisualiser le site
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Builder et prévisualiser le site">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#serveur-de-developpement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Serveur de développement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-de-production" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Build de production
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployer-la-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Déployer la documentation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Déployer la documentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#github-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GitHub Pages
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploiement-cicd-avec-github-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Déploiement CI/CD avec GitHub Actions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploiement-cicd-avec-gitlab-ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Déploiement CI/CD avec GitLab CI
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plugins-utiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plugins utiles
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Plugins utiles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#redirections-avec-mkdocs-redirects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Redirections avec mkdocs-redirects
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#depannage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dépannage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-retenir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        À retenir
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plus-dinfos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plus d'infos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prochaines-etapes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prochaines étapes
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="mkdocs-creer-un-site-de-documentation-devops">MkDocs : créer un site de documentation DevOps<a class="headerlink" href="#mkdocs-creer-un-site-de-documentation-devops" title="Permanent link">&para;</a></h1>
+<p><img alt="logo mkdocs" src="/_astro/logo-mkdocs.B6xwW8Pp_ZWEdRg.webp" /></p>
+<p><a href="https://www.mkdocs.org/"><strong>MkDocs</strong></a> transforme de simples fichiers Markdown en un <strong>site de documentation professionnel</strong>, avec recherche intégrée, navigation et thème responsive. Combiné au thème <a href="https://squidfunk.github.io/mkdocs-material/"><strong>Material for MkDocs</strong></a> (version 9.7), on obtient un outil complet pour toute équipe <a href="/docs/devops/fondamentaux/">DevOps</a> : admonitions, onglets, annotations de code, diagrammes <a href="https://mermaid.js.org/">Mermaid</a>, mode sombre, et déploiement en une commande. Ce guide couvre l'installation, la configuration avancée, la personnalisation et le déploiement <abbr title="Continuous Integration / Continuous Delivery">CI/CD</abbr>. Prérequis : <strong><a href="/docs/developper/programmation/python/">Python</a> 3.9+</strong> et <strong>pip</strong> installés.</p>
+<h2 id="quest-ce-que-mkdocs">Qu'est-ce que MkDocs ?<a class="headerlink" href="#quest-ce-que-mkdocs" title="Permanent link">&para;</a></h2>
+<p>Section intitulée « Qu'est-ce que MkDocs ? »</p>
+<p><a href="https://www.mkdocs.org/"><strong>MkDocs</strong></a> est un <strong>générateur de site statique</strong> (<abbr title="Static Site Generator, générateur de site statique">SSG</abbr>) conçu spécifiquement pour la documentation technique. Contrairement à un CMS comme WordPress, MkDocs prend des fichiers Markdown et un fichier de configuration <a href="/docs/developper/autres-langages/yaml/">YAML</a>, puis génère un site <abbr title="Hyper Text Markup Language, Langage de base du web. Il structure les contenus">HTML</abbr> complet, prêt à être hébergé n'importe où.</p>
+<p>On peut le comparer à un <strong>compilateur pour la documentation</strong> : on écrit du texte brut (Markdown), MkDocs le transforme en pages web interactives avec navigation, recherche et mise en forme.</p>
+<table>
+<thead>
+<tr>
+<th>Caractéristique</th>
+<th>MkDocs</th>
+<th>Wiki classique</th>
+<th>Google Docs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Format source</td>
+<td>Markdown (fichiers texte)</td>
+<td>Interface web</td>
+<td>Interface web</td>
+</tr>
+<tr>
+<td>Versioning</td>
+<td><a href="/docs/developper/version/git/"><abbr title="Outil de versioning. Il permet de suivre l’évolution d’un projet, travailler à plusieurs et éviter les conflits dans le code.">Git</abbr></a> natif</td>
+<td>Intégré (limité)</td>
+<td>Historique Google</td>
+</tr>
+<tr>
+<td>Collaboration</td>
+<td>Pull requests, revues</td>
+<td>Édition directe</td>
+<td>Édition simultanée</td>
+</tr>
+<tr>
+<td>Hébergement</td>
+<td>Statique (gratuit)</td>
+<td>Serveur nécessaire</td>
+<td>Cloud Google</td>
+</tr>
+<tr>
+<td>Personnalisation</td>
+<td>Thèmes + extensions</td>
+<td>Limitée</td>
+<td>Très limitée</td>
+</tr>
+<tr>
+<td>Hors-ligne</td>
+<td>Oui (fichiers locaux)</td>
+<td>Non</td>
+<td>Non</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://squidfunk.github.io/mkdocs-material/"><strong>Material for MkDocs</strong></a> (version 9.7.7) est le thème le plus populaire. Depuis la version <strong>9.7.0 (11 novembre 2025)</strong>, toutes les fonctionnalités anciennement réservées aux sponsors Insiders sont disponibles gratuitement pour tout le monde.</p>
+<h2 id="prerequis">Prérequis<a class="headerlink" href="#prerequis" title="Permanent link">&para;</a></h2>
+<p>Section intitulée « Prérequis »</p>
+<p>Avant de commencer, vérifiez que votre machine dispose de :</p>
+<ul>
+<li><strong>Python 3.9 ou supérieur</strong> : MkDocs est un outil Python</li>
+<li><strong>pip</strong> : le gestionnaire de paquets Python (inclus avec Python)</li>
+<li><strong><abbr title="Outil de versioning. Il permet de suivre l’évolution d’un projet, travailler à plusieurs et éviter les conflits dans le code.">Git</abbr></strong> : pour le versioning et le déploiement (recommandé)</li>
+</ul>
+<p>Fenêtre de terminal</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>python3 --version
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a>pip --version
+</span></code></pre></div></td></tr></table></div>
+<p><strong>Vérification :</strong> ces commandes doivent afficher les versions installées. Si <code>pip</code> n'est pas trouvé, installez-le avec <code>python3 -m ensurepip --upgrade</code>.</p>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
+<p>Section intitulée « Installation »</p>
+<p>MkDocs s'installe en une seule commande. On recommande d'installer directement <strong>mkdocs-material</strong>, qui inclut MkDocs et toutes les dépendances nécessaires.</p>
+<ul>
+<li>pip (recommandé)</li>
+<li>pipx (isolé)</li>
+<li>Docker</li>
+</ul>
+<p>Fenêtre de terminal</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a>pip install mkdocs-material
+</span></code></pre></div></td></tr></table></div>
+<p>Cette commande installe <strong>MkDocs 1.6.1</strong>, <strong>Material 9.7.7</strong>, <a href="https://pygments.org/"><strong>Pygments</strong></a> (coloration syntaxique), <a href="https://facelessuser.github.io/pymdown-extensions/"><strong>Python Markdown Extensions</strong></a> et toutes les dépendances. Relevé le 20 septembre 2026 sur <strong>Debian 13</strong> avec <strong>Python 3.13.5</strong> : <code>mkdocs==1.6.1</code>, <code>mkdocs-material==9.7.7</code>, <code>Markdown==3.10.3</code>, <code>Pygments==2.21.0</code>, <code>pymdown-extensions==12.0.1</code>.</p>
+<p><strong>Vérification :</strong> confirmez l'installation avec :</p>
+<p>Fenêtre de terminal</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a>mkdocs --version
+</span></code></pre></div></td></tr></table></div>
+<p>Le résultat attendu est :</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>mkdocs, version 1.6.1 from [...] (Python 3.12)
+</span></code></pre></div></td></tr></table></div>
+<h2 id="creer-un-projet">Créer un projet<a class="headerlink" href="#creer-un-projet" title="Permanent link">&para;</a></h2>
+<p>Section intitulée « Créer un projet »</p>
+<ol>
+<li><strong>Initialisez le projet</strong> avec la commande <code>mkdocs new</code> :</li>
+</ol>
+<p>Fenêtre de terminal</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a>mkdocs new mon-projet-docs
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a>cd mon-projet-docs
+</span></code></pre></div></td></tr></table></div>
+<p>MkDocs crée la structure suivante :</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span>
+<span class="normal"><a href="#__codelineno-5-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a>mon-projet-docs/
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a>├── docs/
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a>│   └── index.md      # Page d'accueil
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a>└── mkdocs.yml        # Fichier de configuration
+</span></code></pre></div></td></tr></table></div>
+<ol>
+<li><strong>Lancez le serveur de développement</strong> pour prévisualiser le site :</li>
+</ol>
+<p>Fenêtre de terminal</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a>mkdocs serve
+</span></code></pre></div></td></tr></table></div>
+<p>Le site est accessible sur <strong><a href="http://localhost:8000">http://localhost:8000</a></strong>. Le <strong>live reload</strong> recharge automatiquement la page à chaque modification d'un fichier.</p>
+<ol>
+<li><strong>Vérifiez le résultat</strong> en ouvrant le navigateur sur <code>http://localhost:8000</code>. La page d'accueil par défaut s'affiche avec le thème MkDocs de base.</li>
+</ol>
+<p><img alt="Page d'accueil MkDocs Material avec navigation, recherche et grille de cartes" src="/_astro/mkdocs-accueil.CGWPe9a6_T9wUV.webp" /></p>
+<p><strong>Si ça ne marche pas :</strong> si le port 8000 est déjà utilisé, changez-le avec <code>mkdocs serve -a localhost:8001</code>.</p>
+<h2 id="configuration-complete-avec-material">Configuration complète avec Material<a class="headerlink" href="#configuration-complete-avec-material" title="Permanent link">&para;</a></h2>
+<p>Section intitulée « Configuration complète avec Material »</p>
+<p>Le fichier <strong>mkdocs.yml</strong> est le cœur de la configuration. Il centralise tout : le nom du site, le thème, les extensions Markdown utilisées, la navigation et les plugins. Quand on modifie ce fichier, MkDocs recharge automatiquement le site si le serveur tourne.</p>
+<p>La configuration ci-dessous est un <strong>modèle complet et commenté</strong>, adapté à une documentation d'équipe DevOps. Chaque section est expliquée après le bloc :</p>
+<p>mkdocs.yml</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-7-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-7-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-7-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-7-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-7-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-7-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-7-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-7-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-7-10">10</a></span>
+<span class="normal"><a href="#__codelineno-7-11">11</a></span>
+<span class="normal"><a href="#__codelineno-7-12">12</a></span>
+<span class="normal"><a href="#__codelineno-7-13">13</a></span>
+<span class="normal"><a href="#__codelineno-7-14">14</a></span>
+<span class="normal"><a href="#__codelineno-7-15">15</a></span>
+<span class="normal"><a href="#__codelineno-7-16">16</a></span>
+<span class="normal"><a href="#__codelineno-7-17">17</a></span>
+<span class="normal"><a href="#__codelineno-7-18">18</a></span>
+<span class="normal"><a href="#__codelineno-7-19">19</a></span>
+<span class="normal"><a href="#__codelineno-7-20">20</a></span>
+<span class="normal"><a href="#__codelineno-7-21">21</a></span>
+<span class="normal"><a href="#__codelineno-7-22">22</a></span>
+<span class="normal"><a href="#__codelineno-7-23">23</a></span>
+<span class="normal"><a href="#__codelineno-7-24">24</a></span>
+<span class="normal"><a href="#__codelineno-7-25">25</a></span>
+<span class="normal"><a href="#__codelineno-7-26">26</a></span>
+<span class="normal"><a href="#__codelineno-7-27">27</a></span>
+<span class="normal"><a href="#__codelineno-7-28">28</a></span>
+<span class="normal"><a href="#__codelineno-7-29">29</a></span>
+<span class="normal"><a href="#__codelineno-7-30">30</a></span>
+<span class="normal"><a href="#__codelineno-7-31">31</a></span>
+<span class="normal"><a href="#__codelineno-7-32">32</a></span>
+<span class="normal"><a href="#__codelineno-7-33">33</a></span>
+<span class="normal"><a href="#__codelineno-7-34">34</a></span>
+<span class="normal"><a href="#__codelineno-7-35">35</a></span>
+<span class="normal"><a href="#__codelineno-7-36">36</a></span>
+<span class="normal"><a href="#__codelineno-7-37">37</a></span>
+<span class="normal"><a href="#__codelineno-7-38">38</a></span>
+<span class="normal"><a href="#__codelineno-7-39">39</a></span>
+<span class="normal"><a href="#__codelineno-7-40">40</a></span>
+<span class="normal"><a href="#__codelineno-7-41">41</a></span>
+<span class="normal"><a href="#__codelineno-7-42">42</a></span>
+<span class="normal"><a href="#__codelineno-7-43">43</a></span>
+<span class="normal"><a href="#__codelineno-7-44">44</a></span>
+<span class="normal"><a href="#__codelineno-7-45">45</a></span>
+<span class="normal"><a href="#__codelineno-7-46">46</a></span>
+<span class="normal"><a href="#__codelineno-7-47">47</a></span>
+<span class="normal"><a href="#__codelineno-7-48">48</a></span>
+<span class="normal"><a href="#__codelineno-7-49">49</a></span>
+<span class="normal"><a href="#__codelineno-7-50">50</a></span>
+<span class="normal"><a href="#__codelineno-7-51">51</a></span>
+<span class="normal"><a href="#__codelineno-7-52">52</a></span>
+<span class="normal"><a href="#__codelineno-7-53">53</a></span>
+<span class="normal"><a href="#__codelineno-7-54">54</a></span>
+<span class="normal"><a href="#__codelineno-7-55">55</a></span>
+<span class="normal"><a href="#__codelineno-7-56">56</a></span>
+<span class="normal"><a href="#__codelineno-7-57">57</a></span>
+<span class="normal"><a href="#__codelineno-7-58">58</a></span>
+<span class="normal"><a href="#__codelineno-7-59">59</a></span>
+<span class="normal"><a href="#__codelineno-7-60">60</a></span>
+<span class="normal"><a href="#__codelineno-7-61">61</a></span>
+<span class="normal"><a href="#__codelineno-7-62">62</a></span>
+<span class="normal"><a href="#__codelineno-7-63">63</a></span>
+<span class="normal"><a href="#__codelineno-7-64">64</a></span>
+<span class="normal"><a href="#__codelineno-7-65">65</a></span>
+<span class="normal"><a href="#__codelineno-7-66">66</a></span>
+<span class="normal"><a href="#__codelineno-7-67">67</a></span>
+<span class="normal"><a href="#__codelineno-7-68">68</a></span>
+<span class="normal"><a href="#__codelineno-7-69">69</a></span>
+<span class="normal"><a href="#__codelineno-7-70">70</a></span>
+<span class="normal"><a href="#__codelineno-7-71">71</a></span>
+<span class="normal"><a href="#__codelineno-7-72">72</a></span>
+<span class="normal"><a href="#__codelineno-7-73">73</a></span>
+<span class="normal"><a href="#__codelineno-7-74">74</a></span>
+<span class="normal"><a href="#__codelineno-7-75">75</a></span>
+<span class="normal"><a href="#__codelineno-7-76">76</a></span>
+<span class="normal"><a href="#__codelineno-7-77">77</a></span>
+<span class="normal"><a href="#__codelineno-7-78">78</a></span>
+<span class="normal"><a href="#__codelineno-7-79">79</a></span>
+<span class="normal"><a href="#__codelineno-7-80">80</a></span>
+<span class="normal"><a href="#__codelineno-7-81">81</a></span>
+<span class="normal"><a href="#__codelineno-7-82">82</a></span>
+<span class="normal"><a href="#__codelineno-7-83">83</a></span>
+<span class="normal"><a href="#__codelineno-7-84">84</a></span>
+<span class="normal"><a href="#__codelineno-7-85">85</a></span>
+<span class="normal"><a href="#__codelineno-7-86">86</a></span>
+<span class="normal"><a href="#__codelineno-7-87">87</a></span>
+<span class="normal"><a href="#__codelineno-7-88">88</a></span>
+<span class="normal"><a href="#__codelineno-7-89">89</a></span>
+<span class="normal"><a href="#__codelineno-7-90">90</a></span>
+<span class="normal"><a href="#__codelineno-7-91">91</a></span>
+<span class="normal"><a href="#__codelineno-7-92">92</a></span>
+<span class="normal"><a href="#__codelineno-7-93">93</a></span>
+<span class="normal"><a href="#__codelineno-7-94">94</a></span>
+<span class="normal"><a href="#__codelineno-7-95">95</a></span>
+<span class="normal"><a href="#__codelineno-7-96">96</a></span>
+<span class="normal"><a href="#__codelineno-7-97">97</a></span>
+<span class="normal"><a href="#__codelineno-7-98">98</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a># -- Métadonnées du site --
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a>site_name: Documentation DevOps
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3"></a>site_url: https://mon-equipe.github.io/docs/
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4"></a>site_description: Documentation technique de l'équipe DevOps
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5"></a>site_author: Équipe DevOps
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6"></a>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7"></a># -- Thème Material --
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8"></a>theme:
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9"></a>  name: material
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10"></a>  language: fr                    # Interface en français
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11"></a>  palette:
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12"></a>    - scheme: default             # Mode clair
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13"></a>      primary: indigo             # À adapter à votre charte graphique
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14"></a>      accent: indigo              # À adapter à votre charte graphique
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15"></a>      toggle:
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16"></a>        icon: material/brightness-7
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17"></a>        name: Passer au mode sombre
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18"></a>    - scheme: slate               # Mode sombre
+</span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19"></a>      primary: indigo             # À adapter à votre charte graphique
+</span><span id="__span-7-20"><a id="__codelineno-7-20" name="__codelineno-7-20"></a>      accent: indigo              # À adapter à votre charte graphique
+</span><span id="__span-7-21"><a id="__codelineno-7-21" name="__codelineno-7-21"></a>      toggle:
+</span><span id="__span-7-22"><a id="__codelineno-7-22" name="__codelineno-7-22"></a>        icon: material/brightness-4
+</span><span id="__span-7-23"><a id="__codelineno-7-23" name="__codelineno-7-23"></a>        name: Passer au mode clair
+</span><span id="__span-7-24"><a id="__codelineno-7-24" name="__codelineno-7-24"></a>  features:
+</span><span id="__span-7-25"><a id="__codelineno-7-25" name="__codelineno-7-25"></a>    - navigation.instant          # Navigation instantanée (fetch + replace)
+</span><span id="__span-7-26"><a id="__codelineno-7-26" name="__codelineno-7-26"></a>    - navigation.instant.prefetch # Préchargement des pages au survol
+</span><span id="__span-7-27"><a id="__codelineno-7-27" name="__codelineno-7-27"></a>    - navigation.tracking         # URL reflète la section visible
+</span><span id="__span-7-28"><a id="__codelineno-7-28" name="__codelineno-7-28"></a>    - navigation.tabs             # Onglets de navigation principaux
+</span><span id="__span-7-29"><a id="__codelineno-7-29" name="__codelineno-7-29"></a>    - navigation.sections         # Sections dans la sidebar
+</span><span id="__span-7-30"><a id="__codelineno-7-30" name="__codelineno-7-30"></a>    - navigation.top              # Bouton retour en haut
+</span><span id="__span-7-31"><a id="__codelineno-7-31" name="__codelineno-7-31"></a>    - navigation.indexes          # Pages d'index de section
+</span><span id="__span-7-32"><a id="__codelineno-7-32" name="__codelineno-7-32"></a>    - search.suggest              # Suggestions de recherche
+</span><span id="__span-7-33"><a id="__codelineno-7-33" name="__codelineno-7-33"></a>    - search.highlight            # Surlignage des résultats
+</span><span id="__span-7-34"><a id="__codelineno-7-34" name="__codelineno-7-34"></a>    - content.code.copy           # Bouton copier sur les blocs de code
+</span><span id="__span-7-35"><a id="__codelineno-7-35" name="__codelineno-7-35"></a>    - content.code.annotate       # Annotations dans le code
+</span><span id="__span-7-36"><a id="__codelineno-7-36" name="__codelineno-7-36"></a>    - content.tabs.link           # Onglets liés entre sections
+</span><span id="__span-7-37"><a id="__codelineno-7-37" name="__codelineno-7-37"></a>    - content.tooltips            # Tooltips améliorés sur les liens
+</span><span id="__span-7-38"><a id="__codelineno-7-38" name="__codelineno-7-38"></a>    - toc.follow                  # Table des matières suit le scroll
+</span><span id="__span-7-39"><a id="__codelineno-7-39" name="__codelineno-7-39"></a>
+</span><span id="__span-7-40"><a id="__codelineno-7-40" name="__codelineno-7-40"></a># -- Plugins --
+</span><span id="__span-7-41"><a id="__codelineno-7-41" name="__codelineno-7-41"></a>plugins:
+</span><span id="__span-7-42"><a id="__codelineno-7-42" name="__codelineno-7-42"></a>  - search:
+</span><span id="__span-7-43"><a id="__codelineno-7-43" name="__codelineno-7-43"></a>      lang: fr                    # Recherche en français
+</span><span id="__span-7-44"><a id="__codelineno-7-44" name="__codelineno-7-44"></a>  - tags                          # Système de tags
+</span><span id="__span-7-45"><a id="__codelineno-7-45" name="__codelineno-7-45"></a>
+</span><span id="__span-7-46"><a id="__codelineno-7-46" name="__codelineno-7-46"></a># -- Extensions Markdown --
+</span><span id="__span-7-47"><a id="__codelineno-7-47" name="__codelineno-7-47"></a>markdown_extensions:
+</span><span id="__span-7-48"><a id="__codelineno-7-48" name="__codelineno-7-48"></a>  - admonition                              # Encadrés (note, tip, warning...)
+</span><span id="__span-7-49"><a id="__codelineno-7-49" name="__codelineno-7-49"></a>  - pymdownx.details                        # Encadrés dépliables
+</span><span id="__span-7-50"><a id="__codelineno-7-50" name="__codelineno-7-50"></a>  - pymdownx.superfences:                   # Blocs de code avancés
+</span><span id="__span-7-51"><a id="__codelineno-7-51" name="__codelineno-7-51"></a>      custom_fences:
+</span><span id="__span-7-52"><a id="__codelineno-7-52" name="__codelineno-7-52"></a>        - name: mermaid                     # Diagrammes Mermaid
+</span><span id="__span-7-53"><a id="__codelineno-7-53" name="__codelineno-7-53"></a>          class: mermaid
+</span><span id="__span-7-54"><a id="__codelineno-7-54" name="__codelineno-7-54"></a>          format: !!python/name:pymdownx.superfences.fence_code_format
+</span><span id="__span-7-55"><a id="__codelineno-7-55" name="__codelineno-7-55"></a>  - pymdownx.tabbed:                        # Onglets de contenu
+</span><span id="__span-7-56"><a id="__codelineno-7-56" name="__codelineno-7-56"></a>      alternate_style: true
+</span><span id="__span-7-57"><a id="__codelineno-7-57" name="__codelineno-7-57"></a>  - pymdownx.highlight:                     # Coloration syntaxique
+</span><span id="__span-7-58"><a id="__codelineno-7-58" name="__codelineno-7-58"></a>      anchor_linenums: true
+</span><span id="__span-7-59"><a id="__codelineno-7-59" name="__codelineno-7-59"></a>      line_spans: __span
+</span><span id="__span-7-60"><a id="__codelineno-7-60" name="__codelineno-7-60"></a>      pygments_lang_class: true
+</span><span id="__span-7-61"><a id="__codelineno-7-61" name="__codelineno-7-61"></a>  - pymdownx.inlinehilite                   # Code inline coloré
+</span><span id="__span-7-62"><a id="__codelineno-7-62" name="__codelineno-7-62"></a>  - pymdownx.snippets                       # Inclusion de fichiers
+</span><span id="__span-7-63"><a id="__codelineno-7-63" name="__codelineno-7-63"></a>  - pymdownx.emoji:                         # Emojis et icônes
+</span><span id="__span-7-64"><a id="__codelineno-7-64" name="__codelineno-7-64"></a>      emoji_index: !!python/name:material.extensions.emoji.twemoji
+</span><span id="__span-7-65"><a id="__codelineno-7-65" name="__codelineno-7-65"></a>      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+</span><span id="__span-7-66"><a id="__codelineno-7-66" name="__codelineno-7-66"></a>  - attr_list                               # Attributs HTML sur éléments
+</span><span id="__span-7-67"><a id="__codelineno-7-67" name="__codelineno-7-67"></a>  - md_in_html                              # Markdown dans le HTML
+</span><span id="__span-7-68"><a id="__codelineno-7-68" name="__codelineno-7-68"></a>  - tables                                  # Tableaux
+</span><span id="__span-7-69"><a id="__codelineno-7-69" name="__codelineno-7-69"></a>  - footnotes                               # Notes de bas de page
+</span><span id="__span-7-70"><a id="__codelineno-7-70" name="__codelineno-7-70"></a>  - pymdownx.critic                         # Suivi des modifications
+</span><span id="__span-7-71"><a id="__codelineno-7-71" name="__codelineno-7-71"></a>  - pymdownx.caret                          # Superscript et insertion
+</span><span id="__span-7-72"><a id="__codelineno-7-72" name="__codelineno-7-72"></a>  - pymdownx.keys                           # Raccourcis clavier
+</span><span id="__span-7-73"><a id="__codelineno-7-73" name="__codelineno-7-73"></a>  - pymdownx.mark                           # Surlignage de texte
+</span><span id="__span-7-74"><a id="__codelineno-7-74" name="__codelineno-7-74"></a>  - pymdownx.tilde                          # Subscript et barré
+</span><span id="__span-7-75"><a id="__codelineno-7-75" name="__codelineno-7-75"></a>  - toc:                                    # Table des matières
+</span><span id="__span-7-76"><a id="__codelineno-7-76" name="__codelineno-7-76"></a>      permalink: true
+</span><span id="__span-7-77"><a id="__codelineno-7-77" name="__codelineno-7-77"></a>  - pymdownx.tasklist:                      # Listes de tâches
+</span><span id="__span-7-78"><a id="__codelineno-7-78" name="__codelineno-7-78"></a>      custom_checkbox: true
+</span><span id="__span-7-79"><a id="__codelineno-7-79" name="__codelineno-7-79"></a>  - def_list                                # Listes de définitions
+</span><span id="__span-7-80"><a id="__codelineno-7-80" name="__codelineno-7-80"></a>  - abbr                                    # Abréviations
+</span><span id="__span-7-81"><a id="__codelineno-7-81" name="__codelineno-7-81"></a>
+</span><span id="__span-7-82"><a id="__codelineno-7-82" name="__codelineno-7-82"></a># -- Navigation --
+</span><span id="__span-7-83"><a id="__codelineno-7-83" name="__codelineno-7-83"></a>nav:
+</span><span id="__span-7-84"><a id="__codelineno-7-84" name="__codelineno-7-84"></a>  - Accueil: index.md
+</span><span id="__span-7-85"><a id="__codelineno-7-85" name="__codelineno-7-85"></a>  - Guide:
+</span><span id="__span-7-86"><a id="__codelineno-7-86" name="__codelineno-7-86"></a>      - Installation: guide/installation.md
+</span><span id="__span-7-87"><a id="__codelineno-7-87" name="__codelineno-7-87"></a>      - Configuration: guide/configuration.md
+</span><span id="__span-7-88"><a id="__codelineno-7-88" name="__codelineno-7-88"></a>      - Déploiement: guide/deploiement.md
+</span><span id="__span-7-89"><a id="__codelineno-7-89" name="__codelineno-7-89"></a>  - Référence:
+</span><span id="__span-7-90"><a id="__codelineno-7-90" name="__codelineno-7-90"></a>      - API: reference/api.md
+</span><span id="__span-7-91"><a id="__codelineno-7-91" name="__codelineno-7-91"></a>
+</span><span id="__span-7-92"><a id="__codelineno-7-92" name="__codelineno-7-92"></a># -- Pied de page et liens sociaux --
+</span><span id="__span-7-93"><a id="__codelineno-7-93" name="__codelineno-7-93"></a>extra:
+</span><span id="__span-7-94"><a id="__codelineno-7-94" name="__codelineno-7-94"></a>  social:
+</span><span id="__span-7-95"><a id="__codelineno-7-95" name="__codelineno-7-95"></a>    - icon: fontawesome/brands/github
+</span><span id="__span-7-96"><a id="__codelineno-7-96" name="__codelineno-7-96"></a>      link: https://github.com/mon-equipe
+</span><span id="__span-7-97"><a id="__codelineno-7-97" name="__codelineno-7-97"></a>    - icon: fontawesome/brands/gitlab
+</span><span id="__span-7-98"><a id="__codelineno-7-98" name="__codelineno-7-98"></a>      link: https://gitlab.com/mon-equipe
+</span></code></pre></div></td></tr></table></div>
+<p><strong>Vérification :</strong> après avoir enregistré le fichier, relancez <code>mkdocs serve</code>. Le thème Material doit s'afficher avec le mode clair/sombre et les onglets de navigation.</p>
+<p>Décomposons les sections clés de cette configuration :</p>
+<p><strong>Métadonnées du site</strong> : les quatre premières lignes (<code>site_name</code>, <code>site_url</code>, etc.) définissent l'identité du site. Le <code>site_url</code> est important : il sert à générer les liens canoniques et le sitemap. Définissez-le même en développement.</p>
+<p><strong>Thème et palette</strong> : la section <code>theme</code> active Material et configure le basculement clair/sombre. Chaque <code>scheme</code> définit ses couleurs <code>primary</code> (barre de navigation, liens) et <code>accent</code> (éléments interactifs au survol). Changez <code>indigo</code> par la couleur de votre charte graphique.</p>
+<p><strong>Features</strong> : chaque ligne active un comportement précis. <code>navigation.instant</code> rend la navigation fluide (les pages se chargent sans refresh complet). <code>content.code.copy</code> ajoute un bouton "copier" sur tous les blocs de code. <code>search.suggest</code> propose des suggestions pendant la frappe dans la barre de recherche. Désactivez une feature en la commentant : le site fonctionnera toujours, avec un comportement plus basique.</p>
+<p><strong>Extensions Markdown</strong> : c'est la liste des extensions qui enrichissent la syntaxe Markdown. Sans elles, vous n'avez que le Markdown de base (titres, listes, gras). Chaque extension ajoute une fonctionnalité : <code>admonition</code> pour les encadrés colorés, <code>pymdownx.tabbed</code> pour les onglets, <code>pymdownx.superfences</code> pour Mermaid, etc. L'ordre n'a pas d'importance.</p>
+<p><strong>Navigation (<code>nav</code>)</strong> : cette section contrôle l'ordre et la hiérarchie des pages dans le menu latéral. Sans elle, MkDocs génère la navigation automatiquement à partir de l'arborescence des fichiers (ce qui fonctionne bien pour les petits sites, mais devient aléatoire sur les gros projets).</p>
+<h2 id="organiser-le-contenu">Organiser le contenu<a class="headerlink" href="#organiser-le-contenu" title="Permanent link">&para;</a></h2>
+<p>Section intitulée « Organiser le contenu »</p>
+<p>Dans MkDocs, chaque fichier Markdown du dossier <code>docs/</code> devient une <strong>page du site</strong>. L'arborescence des fichiers détermine la structure de la navigation : un dossier <code>guide/</code> crée une section "Guide" dans le menu, et chaque fichier <code>.md</code> à l'intérieur devient un lien dans cette section.</p>
+<p>Voici un exemple d'organisation typique pour une documentation DevOps :</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-8-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-8-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-8-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-8-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-8-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-8-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-8-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-8-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-8-10">10</a></span>
+<span class="normal"><a href="#__codelineno-8-11">11</a></span>
+<span class="normal"><a href="#__codelineno-8-12">12</a></span>
+<span class="normal"><a href="#__codelineno-8-13">13</a></span>
+<span class="normal"><a href="#__codelineno-8-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a>docs/
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2"></a>├── index.md                    # Page d'accueil
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3"></a>├── guide/
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4"></a>│   ├── installation.md         # Guide d'installation
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5"></a>│   ├── configuration.md        # Guide de configuration
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6"></a>│   └── deploiement.md          # Guide de déploiement
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7"></a>├── reference/
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8"></a>│   ├── api.md                  # Référence API
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9"></a>│   └── cli.md                  # Référence CLI
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10"></a>├── runbooks/
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11"></a>│   ├── incident-base.md        # Procédure incident base de données
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12"></a>│   └── rollback.md             # Procédure de rollback
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13"></a>└── assets/
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14"></a>    └── images/                 # Images et schémas
+</span></code></pre></div></td></tr></table></div>
+<p>La section <code>nav</code> de <code>mkdocs.yml</code> permet de contrôler <strong>explicitement</strong> l'ordre et la hiérarchie des pages. C'est recommandé pour tout projet ayant plus d'une dizaine de pages : sans <code>nav</code>, MkDocs trie les fichiers par ordre alphabétique, ce qui produit souvent un menu incohérent ("<abbr title="Application Programming Interface, Interface qui permet à différentes applications de communiquer entre elles. Par exemple, une app météo utilise une API pour afficher la température en temps réel.">API</abbr>" avant "Installation", par exemple). Avec <code>nav</code>, vous décidez précisément ce que le lecteur voit et dans quel ordre.</p>
+<h2 id="rediger-du-contenu-enrichi">Rédiger du contenu enrichi<a class="headerlink" href="#rediger-du-contenu-enrichi" title="Permanent link">&para;</a></h2>
+<p>Section intitulée « Rédiger du contenu enrichi »</p>
+<p>Material for MkDocs étend considérablement les possibilités du Markdown standard. Les fonctionnalités sont regroupées par niveau d'utilité :</p>
+<ul>
+<li><strong>Essentiel</strong> : admonitions, onglets, blocs de code avec copie, Mermaid</li>
+<li><strong>Très utile</strong> : annotations de code, snippets, listes de tâches, tooltips/glossaire, footnotes</li>
+<li><strong>Bonus</strong> : grilles de cartes, formatage avancé (Critic, surlignage, touches clavier), boutons, images clair/sombre, lightbox</li>
+</ul>
+<p>Commencez par les fonctionnalités essentielles, puis enrichissez au fil des besoins de votre équipe.</p>
+<h3 id="admonitions-encadres">Admonitions (encadrés)<a class="headerlink" href="#admonitions-encadres" title="Permanent link">&para;</a></h3>
+<p>Section intitulée « Admonitions (encadrés) »</p>
+<p>Les <strong>admonitions</strong> permettent de mettre en valeur des informations importantes. Elles sont activées par l'extension <code>admonition</code>.</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-9-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-9-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-9-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-9-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-9-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-9-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-9-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-9-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-9-10">10</a></span>
+<span class="normal"><a href="#__codelineno-9-11">11</a></span>
+<span class="normal"><a href="#__codelineno-9-12">12</a></span>
+<span class="normal"><a href="#__codelineno-9-13">13</a></span>
+<span class="normal"><a href="#__codelineno-9-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a>!!! note "Information importante"
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2"></a>    Le contenu de l'admonition supporte **tout le Markdown** :
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3"></a>    listes, code, liens, etc.
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4"></a>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5"></a>!!! tip "Astuce"
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6"></a>    Utilisez `mkdocs serve --dirty` pour accélérer le rechargement
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7"></a>    sur les gros projets (seules les pages modifiées sont regénérées).
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8"></a>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9"></a>!!! warning "Attention"
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10"></a>    Ne commitez jamais de secrets dans votre documentation.
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11"></a>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12"></a>!!! danger "Danger"
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13"></a>    Supprimer le dossier `site/` en production efface la documentation
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14"></a>    déployée.
+</span></code></pre></div></td></tr></table></div>
+<p>Pour créer un encadré <strong>dépliable</strong> (fermé par défaut), on remplace <code>!!!</code> par <code>???</code> (nécessite l'extension <code>pymdownx.details</code>) :</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
+<span class="normal"><a href="#__codelineno-10-2">2</a></span>
+<span class="normal"><a href="#__codelineno-10-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a>??? example "Cliquez pour voir l'exemple"
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2"></a>    Contenu masqué par défaut. Utile pour les longues sorties
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3"></a>    de commandes ou les configurations complètes.
+</span></code></pre></div></td></tr></table></div>
+<p>Ajouter un <code>+</code> après <code>???</code> rend l'encadré <strong>dépliable mais ouvert</strong> par défaut :</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
+<span class="normal"><a href="#__codelineno-11-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a>???+ tip "Astuce (ouverte par défaut)"
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2"></a>    L'utilisateur peut replier cet encadré s'il le souhaite.
+</span></code></pre></div></td></tr></table></div>
+<p>On peut aussi rendre un encadré <strong>inline</strong> (flottant à droite ou à gauche du texte) avec le modificateur <code>inline</code> :</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span>
+<span class="normal"><a href="#__codelineno-12-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a>!!! info inline end "Rappel"
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2"></a>    Cet encadré flotte à droite du paragraphe suivant.
+</span></code></pre></div></td></tr></table></div>
+<p>Les types disponibles sont : <code>note</code>, <code>abstract</code>, <code>info</code>, <code>tip</code>, <code>success</code>, <code>question</code>, <code>warning</code>, <code>failure</code>, <code>danger</code>, <code>bug</code>, <code>example</code>, <code>quote</code>.</p>
+<p><img alt="Les différents types d'admonitions Material : note, tip, warning, danger et plus" src="/_astro/mkdocs-admonitions.Cyg-fWk3_Z1Bg6wP.webp" /></p>
+<h3 id="onglets-de-contenu">Onglets de contenu<a class="headerlink" href="#onglets-de-contenu" title="Permanent link">&para;</a></h3>
+<p>Section intitulée « Onglets de contenu »</p>
+<p>Les <strong>onglets</strong> permettent de présenter des variantes d'une même procédure (distributions <a href="/docs/admin-serveurs/linux/">Linux</a>, langages, outils). Ils sont activés par l'extension <code>pymdownx.tabbed</code>.</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-13-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-13-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-13-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-13-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-13-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-13-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-13-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-13-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-13-10">10</a></span>
+<span class="normal"><a href="#__codelineno-13-11">11</a></span>
+<span class="normal"><a href="#__codelineno-13-12">12</a></span>
+<span class="normal"><a href="#__codelineno-13-13">13</a></span>
+<span class="normal"><a href="#__codelineno-13-14">14</a></span>
+<span class="normal"><a href="#__codelineno-13-15">15</a></span>
+<span class="normal"><a href="#__codelineno-13-16">16</a></span>
+<span class="normal"><a href="#__codelineno-13-17">17</a></span>
+<span class="normal"><a href="#__codelineno-13-18">18</a></span>
+<span class="normal"><a href="#__codelineno-13-19">19</a></span>
+<span class="normal"><a href="#__codelineno-13-20">20</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a>=== "Ubuntu/Debian"
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2"></a>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3"></a>    ```bash
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4"></a>    sudo apt update &amp;&amp; sudo apt install -y python3-pip
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5"></a>    pip install mkdocs-material
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6"></a>    ```
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7"></a>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8"></a>=== "Rocky/RHEL"
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9"></a>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10"></a>    ```bash
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11"></a>    sudo dnf install -y python3-pip
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12"></a>    pip install mkdocs-material
+</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13"></a>    ```
+</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14"></a>
+</span><span id="__span-13-15"><a id="__codelineno-13-15" name="__codelineno-13-15"></a>=== "macOS"
+</span><span id="__span-13-16"><a id="__codelineno-13-16" name="__codelineno-13-16"></a>
+</span><span id="__span-13-17"><a id="__codelineno-13-17" name="__codelineno-13-17"></a>    ```bash
+</span><span id="__span-13-18"><a id="__codelineno-13-18" name="__codelineno-13-18"></a>    brew install python3
+</span><span id="__span-13-19"><a id="__codelineno-13-19" name="__codelineno-13-19"></a>    pip3 install mkdocs-material
+</span><span id="__span-13-20"><a id="__codelineno-13-20" name="__codelineno-13-20"></a>    ```
+</span></code></pre></div></td></tr></table></div>
+<p>Avec l'option <code>content.tabs.link</code> activée dans les features du thème, un clic sur un onglet synchronise <strong>tous les onglets de la page</strong> qui portent le même label.</p>
+<p><img alt="Onglets de contenu synchronisés : Ubuntu, Rocky, macOS" src="/_astro/mkdocs-onglets.BgIDe0GF_Z1jivTN.webp" /></p>
+<h3 id="blocs-de-code-avances">Blocs de code avancés<a class="headerlink" href="#blocs-de-code-avances" title="Permanent link">&para;</a></h3>
+<p>Section intitulée « Blocs de code avancés »</p>
+<p>Material ajoute des fonctionnalités puissantes aux blocs de code standard :</p>
+<p><strong>Titre, numéros de lignes et bouton copier :</strong></p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span>
+<span class="normal"><a href="#__codelineno-14-2">2</a></span>
+<span class="normal"><a href="#__codelineno-14-3">3</a></span>
+<span class="normal"><a href="#__codelineno-14-4">4</a></span>
+<span class="normal"><a href="#__codelineno-14-5">5</a></span>
+<span class="normal"><a href="#__codelineno-14-6">6</a></span>
+<span class="normal"><a href="#__codelineno-14-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a>```python title="hello.py" linenums="1"
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2"></a>def saluer(nom: str) -&gt; str:
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3"></a>    """Retourne un message de bienvenue."""
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4"></a>    return f"Bonjour {nom} !"
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5"></a>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6"></a>print(saluer("DevOps"))
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7"></a>```
+</span></code></pre></div></td></tr></table></div>
+<p><strong>Annotations dans le code</strong> (nécessite <code>content.code.annotate</code> dans les features) :</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span>
+<span class="normal"><a href="#__codelineno-15-2">2</a></span>
+<span class="normal"><a href="#__codelineno-15-3">3</a></span>
+<span class="normal"><a href="#__codelineno-15-4">4</a></span>
+<span class="normal"><a href="#__codelineno-15-5">5</a></span>
+<span class="normal"><a href="#__codelineno-15-6">6</a></span>
+<span class="normal"><a href="#__codelineno-15-7">7</a></span>
+<span class="normal"><a href="#__codelineno-15-8">8</a></span>
+<span class="normal"><a href="#__codelineno-15-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a>```yaml title="mkdocs.yml"
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2"></a>theme:
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3"></a>  name: material # (1)!
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4"></a>  features:
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5"></a>    - navigation.instant # (2)!
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6"></a>```
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7"></a>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8"></a>1. Le thème Material est le plus populaire pour MkDocs
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9"></a>2. Active la navigation sans rechargement de page
+</span></code></pre></div></td></tr></table></div>
+<p>Les annotations apparaissent comme des <strong>icônes cliquables</strong> dans le code. Au clic, une bulle affiche l'explication. Cela permet d'expliquer chaque ligne sans surcharger le bloc de code.</p>
+<p><img alt="Annotations de code : icônes numérotées avec bulles explicatives" src="/_astro/mkdocs-annotations-code.BZv1puU4_pvrPo.webp" /></p>
+<p><strong>Mise en surbrillance de lignes spécifiques :</strong></p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span>
+<span class="normal"><a href="#__codelineno-16-2">2</a></span>
+<span class="normal"><a href="#__codelineno-16-3">3</a></span>
+<span class="normal"><a href="#__codelineno-16-4">4</a></span>
+<span class="normal"><a href="#__codelineno-16-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a>```yaml hl_lines="2 3"
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2"></a>theme:
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3"></a>  name: material
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4"></a>  language: fr
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5"></a>```
+</span></code></pre></div></td></tr></table></div>
+<h3 id="diagrammes-mermaid">Diagrammes Mermaid<a class="headerlink" href="#diagrammes-mermaid" title="Permanent link">&para;</a></h3>
+<p>Section intitulée « Diagrammes Mermaid »</p>
+<p>Material rend <a href="https://mermaid.js.org/"><strong>Mermaid</strong></a> simple à activer via l'extension <code>pymdownx.superfences</code> et une configuration <code>custom_fences</code>. Mermaid génère des diagrammes à partir de texte, idéal pour documenter des architectures et des flux.</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span>
+<span class="normal"><a href="#__codelineno-17-2">2</a></span>
+<span class="normal"><a href="#__codelineno-17-3">3</a></span>
+<span class="normal"><a href="#__codelineno-17-4">4</a></span>
+<span class="normal"><a href="#__codelineno-17-5">5</a></span>
+<span class="normal"><a href="#__codelineno-17-6">6</a></span>
+<span class="normal"><a href="#__codelineno-17-7">7</a></span>
+<span class="normal"><a href="#__codelineno-17-8">8</a></span>
+<span class="normal"><a href="#__codelineno-17-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a>```mermaid
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2"></a>graph LR
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3"></a>    A[Écrire en Markdown] --&gt; B[mkdocs build]
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4"></a>    B --&gt; C[Site HTML statique]
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5"></a>    C --&gt; D{Déployer}
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6"></a>    D --&gt; E[GitHub Pages]
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7"></a>    D --&gt; F[GitLab Pages]
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8"></a>    D --&gt; G[Serveur interne]
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9"></a>```
+</span></code></pre></div></td></tr></table></div>
+<p>Mermaid supporte de nombreux types de diagrammes : <strong>flowcharts</strong>, <strong>diagrammes de séquence</strong>, <strong>diagrammes de classes</strong>, <strong>diagrammes d'état</strong>, <strong>diagrammes de Gantt</strong>, etc. Tout est rendu côté client, sans serveur supplémentaire.</p>
+<p><img alt="Diagramme Mermaid (flowchart) rendu dans Material for MkDocs" src="/_astro/mkdocs-mermaid.ChDOkUJB_Z2ws2yA.webp" /></p>
+<h3 id="listes-de-taches-et-notes-de-bas-de-page">Listes de tâches et notes de bas de page<a class="headerlink" href="#listes-de-taches-et-notes-de-bas-de-page" title="Permanent link">&para;</a></h3>
+<p>Section intitulée « Listes de tâches et notes de bas de page »</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span>
+<span class="normal"><a href="#__codelineno-18-2">2</a></span>
+<span class="normal"><a href="#__codelineno-18-3">3</a></span>
+<span class="normal"><a href="#__codelineno-18-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a>- [x] Installer MkDocs
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2"></a>- [x] Configurer le thème Material
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3"></a>- [ ] Rédiger la documentation
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4"></a>- [ ] Déployer sur GitHub Pages
+</span></code></pre></div></td></tr></table></div>
+<p>Les <strong>notes de bas de page</strong> permettent d'ajouter des références sans couper le fil de lecture :</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span>
+<span class="normal"><a href="#__codelineno-19-2">2</a></span>
+<span class="normal"><a href="#__codelineno-19-3">3</a></span>
+<span class="normal"><a href="#__codelineno-19-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1"></a>MkDocs génère des sites statiques[^1] à partir de Markdown.
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2"></a>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3"></a>[^1]: Un site statique est composé uniquement de fichiers HTML, CSS
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4"></a>    et JavaScript, sans base de données ni serveur applicatif.
+</span></code></pre></div></td></tr></table></div>
+<h3 id="grilles-et-cartes">Grilles et cartes<a class="headerlink" href="#grilles-et-cartes" title="Permanent link">&para;</a></h3>
+<p>Section intitulée « Grilles et cartes »</p>
+<p>Les <strong>grilles</strong> (grids) permettent d'organiser le contenu en cartes visuelles, parfaites pour les pages d'index ou les listes de fonctionnalités. Elles nécessitent les extensions <code>attr_list</code> et <code>md_in_html</code> (déjà incluses dans la configuration ci-dessus).</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-20-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-20-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-20-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-20-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-20-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-20-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-20-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-20-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-20-10">10</a></span>
+<span class="normal"><a href="#__codelineno-20-11">11</a></span>
+<span class="normal"><a href="#__codelineno-20-12">12</a></span>
+<span class="normal"><a href="#__codelineno-20-13">13</a></span>
+<span class="normal"><a href="#__codelineno-20-14">14</a></span>
+<span class="normal"><a href="#__codelineno-20-15">15</a></span>
+<span class="normal"><a href="#__codelineno-20-16">16</a></span>
+<span class="normal"><a href="#__codelineno-20-17">17</a></span>
+<span class="normal"><a href="#__codelineno-20-18">18</a></span>
+<span class="normal"><a href="#__codelineno-20-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1"></a>&lt;div class="grid cards" markdown&gt;
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2"></a>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3"></a>-   :material-clock-fast: **Mise en place en 5 minutes**
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4"></a>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5"></a>    ---
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6"></a>
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7"></a>    Installez `mkdocs-material` avec `pip` et démarrez en quelques minutes.
+</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8"></a>
+</span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9"></a>    [:octicons-arrow-right-24: Commencer](#)
+</span><span id="__span-20-10"><a id="__codelineno-20-10" name="__codelineno-20-10"></a>
+</span><span id="__span-20-11"><a id="__codelineno-20-11" name="__codelineno-20-11"></a>-   :fontawesome-brands-markdown: **C'est juste du Markdown**
+</span><span id="__span-20-12"><a id="__codelineno-20-12" name="__codelineno-20-12"></a>
+</span><span id="__span-20-13"><a id="__codelineno-20-13" name="__codelineno-20-13"></a>    ---
+</span><span id="__span-20-14"><a id="__codelineno-20-14" name="__codelineno-20-14"></a>
+</span><span id="__span-20-15"><a id="__codelineno-20-15" name="__codelineno-20-15"></a>    Concentrez-vous sur le contenu, Material génère le site.
+</span><span id="__span-20-16"><a id="__codelineno-20-16" name="__codelineno-20-16"></a>
+</span><span id="__span-20-17"><a id="__codelineno-20-17" name="__codelineno-20-17"></a>    [:octicons-arrow-right-24: Référence](#)
+</span><span id="__span-20-18"><a id="__codelineno-20-18" name="__codelineno-20-18"></a>
+</span><span id="__span-20-19"><a id="__codelineno-20-19" name="__codelineno-20-19"></a>&lt;/div&gt;
+</span></code></pre></div></td></tr></table></div>
+<p>Chaque élément de la liste devient une <strong>carte avec effet de survol</strong>. On peut mélanger des icônes, du Markdown et des liens dans chaque carte.</p>
+<p><img alt="Grille de cartes Material avec icônes et liens d'action" src="/_astro/mkdocs-grilles-cartes.C6xPAITL_Z1eSrOl.webp" /></p>
+<h3 id="icones-et-emojis">Icônes et emojis<a class="headerlink" href="#icones-et-emojis" title="Permanent link">&para;</a></h3>
+<p>Section intitulée « Icônes et emojis »</p>
+<p>Material for MkDocs donne accès à <strong>plus de 10 000 icônes</strong> (Material Design, FontAwesome, Octicons, Simple Icons) et des milliers d'emojis via une syntaxe simple. Ils sont activés par l'extension <code>pymdownx.emoji</code> (déjà dans la configuration).</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1">1</a></span>
+<span class="normal"><a href="#__codelineno-21-2">2</a></span>
+<span class="normal"><a href="#__codelineno-21-3">3</a></span>
+<span class="normal"><a href="#__codelineno-21-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1"></a>:material-account-circle: Profil utilisateur
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2"></a>:fontawesome-brands-docker: Conteneur Docker
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3"></a>:octicons-terminal-24: Terminal
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4"></a>:smile: Emoji sourire
+</span></code></pre></div></td></tr></table></div>
+<p>Les icônes sont utilisables dans les <strong>titres</strong>, les <strong>admonitions</strong>, les <strong>boutons</strong> et les <strong>cartes de grille</strong>. On peut aussi leur ajouter des couleurs et des animations avec des classes <abbr title="Cascading Style Sheets, Langage de style utilisé pour personnaliser l’apparence d’une page HTML">CSS</abbr> personnalisées.</p>
+<h3 id="tooltips-et-glossaire">Tooltips et glossaire<a class="headerlink" href="#tooltips-et-glossaire" title="Permanent link">&para;</a></h3>
+<p>Section intitulée « Tooltips et glossaire »</p>
+<p>Les <strong>abréviations</strong> créent des info-bulles automatiques au survol d'un terme. Activez <code>content.tooltips</code> dans les features du thème pour un rendu amélioré.</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-22-1">1</a></span>
+<span class="normal"><a href="#__codelineno-22-2">2</a></span>
+<span class="normal"><a href="#__codelineno-22-3">3</a></span>
+<span class="normal"><a href="#__codelineno-22-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1"></a>Le HTML est le langage de base du web. Le W3C en maintient la spécification.
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2"></a>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3"></a>*[HTML]: Hyper Text Markup Language
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4"></a>*[W3C]: World Wide Web Consortium
+</span></code></pre></div></td></tr></table></div>
+<p>Pour créer un <strong>glossaire global</strong> (défini une seule fois, appliqué sur toutes les pages), on place les abréviations dans un fichier dédié et on utilise l'extension <code>pymdownx.snippets</code> avec <code>auto_append</code> :</p>
+<p>mkdocs.yml (extrait)</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-23-1">1</a></span>
+<span class="normal"><a href="#__codelineno-23-2">2</a></span>
+<span class="normal"><a href="#__codelineno-23-3">3</a></span>
+<span class="normal"><a href="#__codelineno-23-4">4</a></span>
+<span class="normal"><a href="#__codelineno-23-5">5</a></span>
+<span class="normal"><a href="#__codelineno-23-6">6</a></span>
+<span class="normal"><a href="#__codelineno-23-7">7</a></span>
+<span class="normal"><a href="#__codelineno-23-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1"></a>markdown_extensions:
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2"></a>  - abbr
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3"></a>  - pymdownx.snippets:
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4"></a>      auto_append:
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5"></a>        - includes/abbreviations.md
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6"></a>
+</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7"></a>watch:
+</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8"></a>  - includes
+</span></code></pre></div></td></tr></table></div>
+<p>includes/abbreviations.md</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-24-1">1</a></span>
+<span class="normal"><a href="#__codelineno-24-2">2</a></span>
+<span class="normal"><a href="#__codelineno-24-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1"></a>*[SSG]: Static Site Generator, générateur de site statique
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2"></a>*[CI/CD]: Continuous Integration / Continuous Delivery
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3"></a>*[RBAC]: Role-Based Access Control
+</span></code></pre></div></td></tr></table></div>
+<p>Chaque occurrence de ces termes dans <strong>toute la documentation</strong> affichera automatiquement une info-bulle avec la définition.</p>
+<p><img alt="Tooltip automatique au survol d'un terme du glossaire" src="/_astro/mkdocs-tooltips-glossaire.Bk0IqBf-_ZkGbA0.webp" /></p>
+<h3 id="formatage-avance">Formatage avancé<a class="headerlink" href="#formatage-avance" title="Permanent link">&para;</a></h3>
+<p>Section intitulée « Formatage avancé »</p>
+<p>Material supporte le <strong>surlignage</strong>, les <strong>raccourcis clavier</strong>, les sub/superscripts et le <strong>suivi des modifications</strong> (Critic Markup) via les extensions <code>pymdownx.critic</code>, <code>pymdownx.caret</code>, <code>pymdownx.keys</code>, <code>pymdownx.mark</code> et <code>pymdownx.tilde</code>.</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-25-1">1</a></span>
+<span class="normal"><a href="#__codelineno-25-2">2</a></span>
+<span class="normal"><a href="#__codelineno-25-3">3</a></span>
+<span class="normal"><a href="#__codelineno-25-4">4</a></span>
+<span class="normal"><a href="#__codelineno-25-5">5</a></span>
+<span class="normal"><a href="#__codelineno-25-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1"></a>- ==Texte surligné== avec `pymdownx.mark`
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2"></a>- ^^Texte souligné (insertion)^^ avec `pymdownx.caret`
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3"></a>- ~~Texte barré (suppression)~~ avec `pymdownx.tilde`
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4"></a>- H~2~O (subscript) et A^T^A (superscript)
+</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5"></a>- Raccourci clavier : ++ctrl+alt+del++
+</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6"></a>- Suivi : <del class="critic">texte supprimé</del> et <ins class="critic">texte ajouté</ins>
+</span></code></pre></div></td></tr></table></div>
+<table>
+<thead>
+<tr>
+<th>Syntaxe</th>
+<th>Rendu</th>
+<th>Extension</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>==surligné==</code></td>
+<td>Surbrillance jaune</td>
+<td><code>pymdownx.mark</code></td>
+</tr>
+<tr>
+<td><code>^^souligné^^</code></td>
+<td>Souligné (insertion)</td>
+<td><code>pymdownx.caret</code></td>
+</tr>
+<tr>
+<td><code>~~barré~~</code></td>
+<td>Barré (suppression)</td>
+<td><code>pymdownx.tilde</code></td>
+</tr>
+<tr>
+<td><code>H~2~O</code></td>
+<td>Subscript</td>
+<td><code>pymdownx.tilde</code></td>
+</tr>
+<tr>
+<td><code>A^T^A</code></td>
+<td>Superscript</td>
+<td><code>pymdownx.caret</code></td>
+</tr>
+<tr>
+<td><code>++ctrl+s++</code></td>
+<td>Touche clavier stylisée</td>
+<td><code>pymdownx.keys</code></td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Formatage avancé : surlignage, touches clavier et Critic Markup" src="/_astro/mkdocs-formatage.BtaNR-Ev_2s8jpM.webp" /></p>
+<h3 id="boutons">Boutons<a class="headerlink" href="#boutons" title="Permanent link">&para;</a></h3>
+<p>Section intitulée « Boutons »</p>
+<p>N'importe quel lien peut être transformé en <strong>bouton</strong> grâce à l'extension <code>attr_list</code> et la classe <abbr title="Cascading Style Sheets, Langage de style utilisé pour personnaliser l’apparence d’une page HTML">CSS</abbr> <code>.md-button</code> :</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-26-1">1</a></span>
+<span class="normal"><a href="#__codelineno-26-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1"></a>[Commencer le tutoriel](#){ .md-button }
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2"></a>[Télécharger :fontawesome-solid-download:](#){ .md-button .md-button--primary }
+</span></code></pre></div></td></tr></table></div>
+<p>La classe <code>.md-button--primary</code> donne un bouton rempli avec la couleur principale du thème. On peut aussi ajouter des icônes dans le texte du bouton.</p>
+<p><img alt="Boutons primaire et secondaire avec icônes" src="/_astro/mkdocs-boutons.BCYoyKHe_274sNn.webp" /></p>
+<h3 id="images-avancees">Images avancées<a class="headerlink" href="#images-avancees" title="Permanent link">&para;</a></h3>
+<p>Section intitulée « Images avancées »</p>
+<p>Material étend la gestion des images avec l'<strong>alignement</strong>, les <strong>légendes</strong>, le <strong>chargement différé</strong> et le support <strong>clair/sombre</strong>.</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-27-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1"></a>![Architecture](images/archi.png){ align=left width="300" loading=lazy }
+</span></code></pre></div></td></tr></table></div>
+<table>
+<thead>
+<tr>
+<th>Attribut</th>
+<th>Effet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>align=left</code></td>
+<td>Image flottante à gauche</td>
+</tr>
+<tr>
+<td><code>align=right</code></td>
+<td>Image flottante à droite</td>
+</tr>
+<tr>
+<td><code>width="300"</code></td>
+<td>Largeur en pixels</td>
+</tr>
+<tr>
+<td><code>loading=lazy</code></td>
+<td>Chargement différé (performance)</td>
+</tr>
+</tbody>
+</table>
+<p>Pour ajouter une <strong>légende</strong> :</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-28-1">1</a></span>
+<span class="normal"><a href="#__codelineno-28-2">2</a></span>
+<span class="normal"><a href="#__codelineno-28-3">3</a></span>
+<span class="normal"><a href="#__codelineno-28-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1"></a>&lt;figure markdown="span"&gt;
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2"></a>  ![Architecture du pipeline](images/pipeline.png){ width="600" }
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3"></a>  &lt;figcaption&gt;Architecture du pipeline CI/CD&lt;/figcaption&gt;
+</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4"></a>&lt;/figure&gt;
+</span></code></pre></div></td></tr></table></div>
+<p>Pour afficher une <strong>image différente selon le mode clair/sombre</strong>, ajoutez un fragment <code>#only-light</code> ou <code>#only-dark</code> à l'URL :</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-29-1">1</a></span>
+<span class="normal"><a href="#__codelineno-29-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1"></a>![Schéma](images/schema-light.png#only-light)
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2"></a>![Schéma](images/schema-dark.png#only-dark)
+</span></code></pre></div></td></tr></table></div>
+<p>Pour le <strong>zoom au clic</strong> (lightbox), installez le plugin <a href="https://github.com/blueswen/mkdocs-glightbox"><code>glightbox</code></a> :</p>
+<p>Fenêtre de terminal</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-30-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1"></a>pip install mkdocs-glightbox
+</span></code></pre></div></td></tr></table></div>
+<p>mkdocs.yml (extrait)</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-31-1">1</a></span>
+<span class="normal"><a href="#__codelineno-31-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1"></a>plugins:
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2"></a>  - glightbox
+</span></code></pre></div></td></tr></table></div>
+<p><img alt="Lightbox glightbox : zoom au clic sur une image" src="/_astro/mkdocs-lightbox.6M_ArCe0_Zsbsjx.webp" /></p>
+<h2 id="builder-et-previsualiser-le-site">Builder et prévisualiser le site<a class="headerlink" href="#builder-et-previsualiser-le-site" title="Permanent link">&para;</a></h2>
+<p>Section intitulée « Builder et prévisualiser le site »</p>
+<p>MkDocs propose deux commandes principales pour travailler avec le contenu.</p>
+<h3 id="serveur-de-developpement">Serveur de développement<a class="headerlink" href="#serveur-de-developpement" title="Permanent link">&para;</a></h3>
+<p>Section intitulée « Serveur de développement »</p>
+<p>Fenêtre de terminal</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-32-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1"></a>mkdocs serve
+</span></code></pre></div></td></tr></table></div>
+<p>Le serveur démarre sur <strong><a href="http://localhost:8000">http://localhost:8000</a></strong> avec le <strong>live reload</strong> activé. À chaque sauvegarde d'un fichier, la page se recharge automatiquement.</p>
+<p>Options utiles :</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Effet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-a localhost:8001</code></td>
+<td>Change le port d'écoute</td>
+</tr>
+<tr>
+<td><code>--dirty</code></td>
+<td>Ne regénère que les fichiers modifiés (plus rapide)</td>
+</tr>
+<tr>
+<td><code>--strict</code></td>
+<td>Transforme les warnings en erreurs (recommandé en CI)</td>
+</tr>
+<tr>
+<td><code>-w docs/ -w includes/</code></td>
+<td>Surveille des dossiers supplémentaires</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Barre de recherche MkDocs avec suggestions en temps réel" src="/_astro/mkdocs-recherche.BeA7zE0i_1LUjy0.webp" /></p>
+<h3 id="build-de-production">Build de production<a class="headerlink" href="#build-de-production" title="Permanent link">&para;</a></h3>
+<p>Section intitulée « Build de production »</p>
+<p>Fenêtre de terminal</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-33-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1"></a>mkdocs build --strict
+</span></code></pre></div></td></tr></table></div>
+<p>Le site complet est généré dans le dossier <code>site/</code>. L'option <code>--strict</code> est recommandée car elle détecte les liens cassés, les fichiers manquants et les erreurs de configuration.</p>
+<p><strong>Vérification :</strong> après le build, le dossier <code>site/</code> contient les fichiers <abbr title="Hyper Text Markup Language, Langage de base du web. Il structure les contenus">HTML</abbr>, <abbr title="Cascading Style Sheets, Langage de style utilisé pour personnaliser l’apparence d’une page HTML">CSS</abbr>, <abbr title="JavaScript, Langage incontournable pour rendre un site interactif">JS</abbr> et les assets. On peut les servir avec n'importe quel serveur web statique.</p>
+<h2 id="deployer-la-documentation">Déployer la documentation<a class="headerlink" href="#deployer-la-documentation" title="Permanent link">&para;</a></h2>
+<p>Section intitulée « Déployer la documentation »</p>
+<h3 id="github-pages">GitHub Pages<a class="headerlink" href="#github-pages" title="Permanent link">&para;</a></h3>
+<p>Section intitulée « GitHub Pages »</p>
+<p>MkDocs intègre une commande dédiée pour déployer directement sur <strong>GitHub Pages</strong> via la branche <code>gh-pages</code> :</p>
+<p>Fenêtre de terminal</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-34-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1"></a>mkdocs gh-deploy --strict
+</span></code></pre></div></td></tr></table></div>
+<p>Cette commande <strong>build le site</strong>, crée (ou met à jour) la branche <code>gh-pages</code>, y pousse les fichiers <abbr title="Hyper Text Markup Language, Langage de base du web. Il structure les contenus">HTML</abbr>, et active GitHub Pages automatiquement.</p>
+<h3 id="deploiement-cicd-avec-github-actions">Déploiement <abbr title="Continuous Integration / Continuous Delivery">CI/CD</abbr> avec GitHub Actions<a class="headerlink" href="#deploiement-cicd-avec-github-actions" title="Permanent link">&para;</a></h3>
+<p>Section intitulée « Déploiement <abbr title="Continuous Integration / Continuous Delivery">CI/CD</abbr> avec GitHub Actions »</p>
+<p>Pour automatiser le déploiement à chaque push sur <code>main</code>, créez le fichier <code>.github/workflows/docs.yml</code> :</p>
+<p>.github/workflows/docs.yml</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-35-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-35-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-35-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-35-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-35-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-35-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-35-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-35-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-35-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-35-10">10</a></span>
+<span class="normal"><a href="#__codelineno-35-11">11</a></span>
+<span class="normal"><a href="#__codelineno-35-12">12</a></span>
+<span class="normal"><a href="#__codelineno-35-13">13</a></span>
+<span class="normal"><a href="#__codelineno-35-14">14</a></span>
+<span class="normal"><a href="#__codelineno-35-15">15</a></span>
+<span class="normal"><a href="#__codelineno-35-16">16</a></span>
+<span class="normal"><a href="#__codelineno-35-17">17</a></span>
+<span class="normal"><a href="#__codelineno-35-18">18</a></span>
+<span class="normal"><a href="#__codelineno-35-19">19</a></span>
+<span class="normal"><a href="#__codelineno-35-20">20</a></span>
+<span class="normal"><a href="#__codelineno-35-21">21</a></span>
+<span class="normal"><a href="#__codelineno-35-22">22</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1"></a>name: Déployer la documentation
+</span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2"></a>on:
+</span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3"></a>  push:
+</span><span id="__span-35-4"><a id="__codelineno-35-4" name="__codelineno-35-4"></a>    branches:
+</span><span id="__span-35-5"><a id="__codelineno-35-5" name="__codelineno-35-5"></a>      - main
+</span><span id="__span-35-6"><a id="__codelineno-35-6" name="__codelineno-35-6"></a>
+</span><span id="__span-35-7"><a id="__codelineno-35-7" name="__codelineno-35-7"></a>permissions:
+</span><span id="__span-35-8"><a id="__codelineno-35-8" name="__codelineno-35-8"></a>  contents: write
+</span><span id="__span-35-9"><a id="__codelineno-35-9" name="__codelineno-35-9"></a>
+</span><span id="__span-35-10"><a id="__codelineno-35-10" name="__codelineno-35-10"></a>jobs:
+</span><span id="__span-35-11"><a id="__codelineno-35-11" name="__codelineno-35-11"></a>  deploy:
+</span><span id="__span-35-12"><a id="__codelineno-35-12" name="__codelineno-35-12"></a>    runs-on: ubuntu-latest
+</span><span id="__span-35-13"><a id="__codelineno-35-13" name="__codelineno-35-13"></a>    steps:
+</span><span id="__span-35-14"><a id="__codelineno-35-14" name="__codelineno-35-14"></a>      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
+</span><span id="__span-35-15"><a id="__codelineno-35-15" name="__codelineno-35-15"></a>
+</span><span id="__span-35-16"><a id="__codelineno-35-16" name="__codelineno-35-16"></a>      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065  # v5
+</span><span id="__span-35-17"><a id="__codelineno-35-17" name="__codelineno-35-17"></a>        with:
+</span><span id="__span-35-18"><a id="__codelineno-35-18" name="__codelineno-35-18"></a>          python-version: '3.12'
+</span><span id="__span-35-19"><a id="__codelineno-35-19" name="__codelineno-35-19"></a>
+</span><span id="__span-35-20"><a id="__codelineno-35-20" name="__codelineno-35-20"></a>      - run: pip install -r requirements.txt
+</span><span id="__span-35-21"><a id="__codelineno-35-21" name="__codelineno-35-21"></a>
+</span><span id="__span-35-22"><a id="__codelineno-35-22" name="__codelineno-35-22"></a>      - run: mkdocs gh-deploy --strict --force
+</span></code></pre></div></td></tr></table></div>
+<p><strong>Vérification :</strong> après le push, l'action GitHub build et déploie le site. Allez dans <strong>Settings &gt; Pages</strong> du dépôt pour vérifier que la source est bien <code>gh-pages</code>.</p>
+<h3 id="deploiement-cicd-avec-gitlab-ci">Déploiement <abbr title="Continuous Integration / Continuous Delivery">CI/CD</abbr> avec GitLab CI<a class="headerlink" href="#deploiement-cicd-avec-gitlab-ci" title="Permanent link">&para;</a></h3>
+<p>Section intitulée « Déploiement <abbr title="Continuous Integration / Continuous Delivery">CI/CD</abbr> avec GitLab CI »</p>
+<p>.gitlab-ci.yml</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-36-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-36-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-36-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-36-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-36-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-36-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-36-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-36-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-36-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-36-10">10</a></span>
+<span class="normal"><a href="#__codelineno-36-11">11</a></span>
+<span class="normal"><a href="#__codelineno-36-12">12</a></span>
+<span class="normal"><a href="#__codelineno-36-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1"></a>image: python:3.12-slim@sha256:57cd7c3a7a273101a6485ba99423ee568157882804b1124b4dd04266317710de
+</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2"></a>
+</span><span id="__span-36-3"><a id="__codelineno-36-3" name="__codelineno-36-3"></a>pages:
+</span><span id="__span-36-4"><a id="__codelineno-36-4" name="__codelineno-36-4"></a>  stage: deploy
+</span><span id="__span-36-5"><a id="__codelineno-36-5" name="__codelineno-36-5"></a>  script:
+</span><span id="__span-36-6"><a id="__codelineno-36-6" name="__codelineno-36-6"></a>    - pip install -r requirements.txt
+</span><span id="__span-36-7"><a id="__codelineno-36-7" name="__codelineno-36-7"></a>    - mkdocs build --strict
+</span><span id="__span-36-8"><a id="__codelineno-36-8" name="__codelineno-36-8"></a>    - mv site public
+</span><span id="__span-36-9"><a id="__codelineno-36-9" name="__codelineno-36-9"></a>  artifacts:
+</span><span id="__span-36-10"><a id="__codelineno-36-10" name="__codelineno-36-10"></a>    paths:
+</span><span id="__span-36-11"><a id="__codelineno-36-11" name="__codelineno-36-11"></a>      - public
+</span><span id="__span-36-12"><a id="__codelineno-36-12" name="__codelineno-36-12"></a>  only:
+</span><span id="__span-36-13"><a id="__codelineno-36-13" name="__codelineno-36-13"></a>    - main
+</span></code></pre></div></td></tr></table></div>
+<p>GitLab Pages attend un dossier <code>public/</code>, d'où le renommage de <code>site/</code> en <code>public/</code>.</p>
+<h2 id="plugins-utiles">Plugins utiles<a class="headerlink" href="#plugins-utiles" title="Permanent link">&para;</a></h2>
+<p>Section intitulée « Plugins utiles »</p>
+<p>Material for MkDocs 9.7 inclut plusieurs plugins intégrés. D'autres plugins communautaires enrichissent encore les possibilités.</p>
+<table>
+<thead>
+<tr>
+<th>Plugin</th>
+<th>Usage</th>
+<th>Installation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>search</code></td>
+<td>Recherche full-text côté client</td>
+<td>Inclus</td>
+</tr>
+<tr>
+<td><code>tags</code></td>
+<td>Catégoriser les pages avec des tags</td>
+<td>Inclus dans Material</td>
+</tr>
+<tr>
+<td><code>blog</code></td>
+<td>Ajouter un blog à côté de la doc</td>
+<td>Inclus dans Material</td>
+</tr>
+<tr>
+<td><code>social</code></td>
+<td>Générer des images de partage social</td>
+<td>Inclus dans Material</td>
+</tr>
+<tr>
+<td><code>privacy</code></td>
+<td>Conformité RGPD (pas de requêtes externes)</td>
+<td>Inclus dans Material</td>
+</tr>
+<tr>
+<td><a href="https://github.com/mkdocs/mkdocs-redirects"><code>mkdocs-redirects</code></a></td>
+<td>Gérer les redirections d'URL</td>
+<td><code>pip install mkdocs-redirects</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/byrnereese/mkdocs-minify-plugin"><code>mkdocs-minify-plugin</code></a></td>
+<td>Minifier le <abbr title="Hyper Text Markup Language, Langage de base du web. Il structure les contenus">HTML</abbr>/<abbr title="Cascading Style Sheets, Langage de style utilisé pour personnaliser l’apparence d’une page HTML">CSS</abbr>/<abbr title="JavaScript, Langage incontournable pour rendre un site interactif">JS</abbr> généré</td>
+<td><code>pip install mkdocs-minify-plugin</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/timvink/mkdocs-git-revision-date-localized-plugin"><code>mkdocs-git-revision-date-localized-plugin</code></a></td>
+<td>Afficher la date de dernière modification</td>
+<td><code>pip install mkdocs-git-revision-date-localized-plugin</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="redirections-avec-mkdocs-redirects">Redirections avec mkdocs-redirects<a class="headerlink" href="#redirections-avec-mkdocs-redirects" title="Permanent link">&para;</a></h3>
+<p>Section intitulée « Redirections avec mkdocs-redirects »</p>
+<p>Quand on <strong>renomme</strong> ou <strong>déplace</strong> une page, les anciens liens (favoris, runbooks internes, références depuis d'autres outils) renvoient une 404. Le plugin <code>mkdocs-redirects</code> résout ce problème en générant des pages de redirection <abbr title="Hyper Text Markup Language, Langage de base du web. Il structure les contenus">HTML</abbr> :</p>
+<p>mkdocs.yml (extrait)</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-37-1">1</a></span>
+<span class="normal"><a href="#__codelineno-37-2">2</a></span>
+<span class="normal"><a href="#__codelineno-37-3">3</a></span>
+<span class="normal"><a href="#__codelineno-37-4">4</a></span>
+<span class="normal"><a href="#__codelineno-37-5">5</a></span>
+<span class="normal"><a href="#__codelineno-37-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1"></a>plugins:
+</span><span id="__span-37-2"><a id="__codelineno-37-2" name="__codelineno-37-2"></a>  - redirects:
+</span><span id="__span-37-3"><a id="__codelineno-37-3" name="__codelineno-37-3"></a>      redirect_maps:
+</span><span id="__span-37-4"><a id="__codelineno-37-4" name="__codelineno-37-4"></a>        'ancien-chemin/page.md': 'nouveau-chemin/page.md'
+</span><span id="__span-37-5"><a id="__codelineno-37-5" name="__codelineno-37-5"></a>        'guide/install.md': 'guide/installation.md'
+</span><span id="__span-37-6"><a id="__codelineno-37-6" name="__codelineno-37-6"></a>        'runbooks/rollback-v1.md': 'runbooks/rollback.md'
+</span></code></pre></div></td></tr></table></div>
+<p><strong>Règle DevOps</strong> : chaque renommage de fichier dans <code>docs/</code> doit s'accompagner d'une entrée dans <code>redirect_maps</code>. C'est vital pour éviter les 404 dans les runbooks.</p>
+<p>Exemple d'activation dans <code>mkdocs.yml</code> :</p>
+<p>mkdocs.yml (extrait)</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-38-1">1</a></span>
+<span class="normal"><a href="#__codelineno-38-2">2</a></span>
+<span class="normal"><a href="#__codelineno-38-3">3</a></span>
+<span class="normal"><a href="#__codelineno-38-4">4</a></span>
+<span class="normal"><a href="#__codelineno-38-5">5</a></span>
+<span class="normal"><a href="#__codelineno-38-6">6</a></span>
+<span class="normal"><a href="#__codelineno-38-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1"></a>plugins:
+</span><span id="__span-38-2"><a id="__codelineno-38-2" name="__codelineno-38-2"></a>  - search:
+</span><span id="__span-38-3"><a id="__codelineno-38-3" name="__codelineno-38-3"></a>      lang: fr
+</span><span id="__span-38-4"><a id="__codelineno-38-4" name="__codelineno-38-4"></a>  - tags
+</span><span id="__span-38-5"><a id="__codelineno-38-5" name="__codelineno-38-5"></a>  - blog
+</span><span id="__span-38-6"><a id="__codelineno-38-6" name="__codelineno-38-6"></a>  - social
+</span><span id="__span-38-7"><a id="__codelineno-38-7" name="__codelineno-38-7"></a>  - privacy
+</span></code></pre></div></td></tr></table></div>
+<h2 id="depannage">Dépannage<a class="headerlink" href="#depannage" title="Permanent link">&para;</a></h2>
+<p>Section intitulée « Dépannage »</p>
+<table>
+<thead>
+<tr>
+<th>Symptôme</th>
+<th>Cause probable</th>
+<th>Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>command not found: mkdocs</code></td>
+<td>MkDocs pas dans le PATH</td>
+<td>Vérifier le virtualenv : <code>source .venv/bin/activate</code></td>
+</tr>
+<tr>
+<td><code>Config value 'theme': Uninstalled theme 'material'</code></td>
+<td>mkdocs-material pas installé</td>
+<td><code>pip install mkdocs-material</code></td>
+</tr>
+<tr>
+<td>Le live reload ne fonctionne pas</td>
+<td>Navigateur bloque les WebSockets</td>
+<td>Essayer un autre navigateur ou vider le cache</td>
+</tr>
+<tr>
+<td><code>WARNING - Doc file 'page.md' not found</code></td>
+<td>Fichier référencé dans <code>nav</code> absent</td>
+<td>Créer le fichier ou corriger le chemin dans <code>mkdocs.yml</code></td>
+</tr>
+<tr>
+<td>Port 8000 déjà utilisé</td>
+<td>Un autre processus écoute</td>
+<td><code>mkdocs serve -a localhost:8001</code></td>
+</tr>
+<tr>
+<td>Build échoue en CI</td>
+<td>Dépendances manquantes</td>
+<td>Ajouter toutes les dépendances dans <code>requirements.txt</code></td>
+</tr>
+<tr>
+<td>Les diagrammes Mermaid ne s'affichent pas</td>
+<td>Extension <code>superfences</code> mal configurée</td>
+<td>Vérifier la section <code>custom_fences</code> dans <code>mkdocs.yml</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="a-retenir">À retenir<a class="headerlink" href="#a-retenir" title="Permanent link">&para;</a></h2>
+<p>Section intitulée « À retenir »</p>
+<ul>
+<li><a href="https://www.mkdocs.org/"><strong>MkDocs</strong></a> génère un site statique à partir de fichiers Markdown et d'un seul fichier de configuration YAML (<code>mkdocs.yml</code>).</li>
+<li><a href="https://squidfunk.github.io/mkdocs-material/"><strong>Material for MkDocs 9.7.7</strong></a> est le thème de référence : mode sombre, recherche, admonitions, annotations de code, diagrammes Mermaid. Depuis la 9.7.0, toutes les fonctionnalités Insiders sont gratuites.</li>
+<li><strong>Verrouillez vos dépendances</strong> avec <code>requirements.txt</code> pour des builds reproductibles en équipe et en CI.</li>
+<li>Les fonctionnalités essentielles (<strong>admonitions</strong>, <strong>onglets</strong>, <strong>code annoté</strong>, <strong>Mermaid</strong>) couvrent 90% des besoins d'une doc technique. Les grilles, tooltips, formatage avancé et boutons complètent au fil des besoins.</li>
+<li><code>mkdocs serve</code> pour la prévisualisation locale, <code>mkdocs build --strict</code> pour la production (détecte liens cassés et erreurs de configuration).</li>
+<li>Le déploiement sur <strong>GitHub Pages</strong> se résume à <code>mkdocs gh-deploy</code> (branche <code>gh-pages</code>) ou à un workflow <abbr title="Continuous Integration / Continuous Delivery">CI/CD</abbr>. Protégez vos branches et installez depuis <code>requirements.txt</code>.</li>
+<li>Utilisez <strong>mkdocs-redirects</strong> à chaque renommage de page pour éviter les 404 dans les runbooks et préserver le SEO.</li>
+<li><strong>Material for MkDocs a une fin de vie annoncée au 5 mai 2027</strong>, correctifs de sécurité compris. Rien ne presse pour un site existant, mais un projet démarré aujourd'hui doit porter la migration à son plan.</li>
+<li><strong>Material ne fonctionne pas avec MkDocs 2.0</strong> : le paquet déclare <code>mkdocs&lt;2,&gt;=1.6</code>, et la 2.0 n'existe de toute façon qu'en pré-version.</li>
+<li>Le successeur <a href="https://zensical.org/"><strong>Zensical</strong></a> est publié en <strong>0.0.63</strong> : bon pour évaluer sur une copie, pas encore pour remplacer sans regarder.</li>
+</ul>
+<h2 id="plus-dinfos">Plus d'infos<a class="headerlink" href="#plus-dinfos" title="Permanent link">&para;</a></h2>
+<p>Section intitulée « Plus d'infos »</p>
+<ul>
+<li><strong>Documentation officielle MkDocs</strong> : <a href="https://www.mkdocs.org/">mkdocs.org</a></li>
+<li><strong>Documentation Material for MkDocs</strong> : <a href="https://squidfunk.github.io/mkdocs-material/">squidfunk.github.io/mkdocs-material</a></li>
+<li><strong>Dépôt GitHub MkDocs</strong> : <a href="https://github.com/mkdocs/mkdocs">github.com/mkdocs/mkdocs</a></li>
+<li><strong>Dépôt GitHub Material</strong> : <a href="https://github.com/squidfunk/mkdocs-material">github.com/squidfunk/mkdocs-material</a></li>
+<li><strong>Changelog Material</strong> : <a href="https://squidfunk.github.io/mkdocs-material/changelog/">squidfunk.github.io/mkdocs-material/changelog</a></li>
+<li><strong>Zensical</strong> (successeur en cours) : <a href="https://zensical.org/">zensical.org</a></li>
+</ul>
+<h2 id="prochaines-etapes">Prochaines étapes<a class="headerlink" href="#prochaines-etapes" title="Permanent link">&para;</a></h2>
+<p>Section intitulée « Prochaines étapes »</p>
+<p><a href="https://squidfunk.github.io/mkdocs-material/">Documentation officielle Material </a>Référence complète du thème : composants, configuration, plugins et personnalisation.</p>
+<p><a href="/docs/documenter/fondations/docs-as-code/">Docs-as-Code : principes fondamentaux </a>Comprendre l'approche qui traite la documentation comme du code source.</p>
+<p><a href="/docs/developper/autres-langages/markdown/">Markdown : syntaxe complète </a>Maîtriser la syntaxe Markdown utilisée par MkDocs pour rédiger du contenu.</p>
+<p><a href="/docs/documenter/docusaurus/">Docusaurus : l'alternative React </a>Comparer MkDocs avec Docusaurus, le générateur de docs basé sur React.</p>
+<p><a href="/docs/documenter/astro/">Astro Starlight : le <abbr title="Static Site Generator, générateur de site statique">SSG</abbr> nouvelle génération </a>Découvrir Starlight, le framework de documentation basé sur Astro.</p>
+<p>Soutenez-moi !</p>
+<hr />
+<p>Powered by <a href="https://curl.md">curl.md</a></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.tracking", "navigation.sections", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.code.select", "content.tabs.link", "content.tooltips", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../../assets/external/unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>
