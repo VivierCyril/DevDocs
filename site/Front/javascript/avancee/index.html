@@ -1,0 +1,1545 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Cours et documentation des technologies informtique">
+      
+      
+        <meta name="author" content="Vivier Cyril">
+      
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../../../Back/php/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Démonstration - Dev Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        
+        <link rel="stylesheet" href="../../../assets/external/fonts.googleapis.com/css.49ea35f2.css">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/css/style.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#les-evolutions-de-la-syntaxe-depuis-es5" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Dev Docs" class="md-header__button md-logo" aria-label="Dev Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Dev Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Démonstration
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Dev Docs" class="md-nav__button md-logo" aria-label="Dev Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Dev Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Accueil
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Front-End
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Front-End
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HTML
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    HTML
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../html/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Les Base
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_2" id="__nav_2_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Les Formulaires
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Les Formulaires
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../html/formulaire/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Les Inputs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CSS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CSS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../css/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CSS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    JS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Les Bases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_2" id="__nav_2_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Notions Avancée
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Notions Avancée
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Les évolutions de la syntaxe depuis ES5
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Les évolutions de la syntaxe depuis ES5
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#le-mode-strict-es5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le mode strict (ES5)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#declarer-une-variable-avec-let-et-const-es6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Déclarer une variable avec let et const (ES6)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Back-end
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Back-end
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Back/php/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PHP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Back/sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Back/symfony/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Symfony
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Utilitaire
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Utilitaire
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Utilitaire/mkdocs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mkdocs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Utilitaire/git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A propos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    A propos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../release-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Release Notes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#le-mode-strict-es5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le mode strict (ES5)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#declarer-une-variable-avec-let-et-const-es6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Déclarer une variable avec let et const (ES6)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="les-evolutions-de-la-syntaxe-depuis-es5">Les évolutions de la syntaxe depuis ES5<a class="headerlink" href="#les-evolutions-de-la-syntaxe-depuis-es5" title="Permanent link">&para;</a></h1>
+<p>Depuis la version 5 de ECMAScript (et surtout avec la version 6), la syntaxe du langage a beaucoup évolué pour aller vers une meilleure cohérence et une meilleure robustesse dans le code produit. Ce chapitre résume les évolutions les plus importantes.</p>
+<h2 id="le-mode-strict-es5">Le mode strict (ES5)<a class="headerlink" href="#le-mode-strict-es5" title="Permanent link">&para;</a></h2>
+<p>Depuis ES5, il existe un mode strict qui active un renforcement des contrôles par l’interpréteur. Ce mode permet d’éviter un certain nombre d’erreurs de programmation. Pour des raisons de rétro-compatibilité, ce mode n’est pas actif par défaut. Cependant, il est très fortement conseillé de l’activer pour tout nouveau développement.</p>
+<p>Pour activer le mode strict, il suffit de placer au début du fichier source la chaîne de caractères :
+<div class="language-javascript highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="s1">'use strict'</span>
+</span></code></pre></div></td></tr></table></div></p>
+<p>En mode strict, il n’est pas possible d’utiliser une variable qui n’a pas été préalablement déclarée (avec les mots-clés <code>var</code>, <code>let</code> ou <code>const</code>). Cela évite ainsi les bugs dus à des erreurs de typo.</p>
+<p>En mode strict, l’usage du mot-clé <code>with</code> est impossible.</p>
+<h2 id="declarer-une-variable-avec-let-et-const-es6">Déclarer une variable avec let et const (ES6)<a class="headerlink" href="#declarer-une-variable-avec-let-et-const-es6" title="Permanent link">&para;</a></h2>
+<p>Le mot-clé var est utilisé en JavaScript pour déclarer des variables.</p>
+<p><div class="language-javascript highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+Cependant la notion de déclaration de variable est particulière en JavaScript par rapport à la plupart des autres langages de programmation proches. <code>var</code> n’empêche pas de déclarer à nouveau une variable avec le même nom et la portée des variables est particulière à JavaScript. Si la variable est déclarée au plus haut niveau, il s’agit d’une variable globale mais si elle déclarée ailleurs, sa portée correspond à la fonction dans laquelle elle est déclarée. Cela peut entraîner des effets de bord difficiles à comprendre :</p>
+<div class="language-javascript highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">demo</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#__codelineno-2-14">14</a></span>
+<span class="normal"><a href="#__codelineno-2-15">15</a></span>
+<span class="normal"><a href="#__codelineno-2-16">16</a></span>
+<span class="normal"><a href="#__codelineno-2-17">17</a></span>
+<span class="normal"><a href="#__codelineno-2-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">variable_globale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"globale"</span><span class="p">;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="kd">function</span><span class="w"> </span><span class="nx">ma_fonction</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">variable_locale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"locale"</span><span class="p">;</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="hll"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span></span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="hll"><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">variable_locale_2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"locale 2"</span><span class="p">;</span>
+</span></span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="hll"><span class="w">    </span><span class="p">}</span>
+</span></span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">variable_globale</span><span class="p">);</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">variable_locale</span><span class="p">);</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">variable_locale_2</span><span class="p">);</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="p">}</span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13"></a>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="nx">ma_fonction</span><span class="p">();</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="c1">// Affiche</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="c1">// globale</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="c1">// locale</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="c1">// locale 2</span>
+</span></code></pre></div></td></tr></table></div>
+<p>À la ligne 7, la variable variable_locale_2 est déclarée dans le bloc if mais, contrairement à d’autres langages de programmation, la portée de cette variable est la fonction. Donc il est possible d’accéder à sa valeur à la ligne 11 après le bloc if.</p>
+<p>Pour corriger ce comportement tout en maintenant la rétro-compatibilité pour le code existant, ES6 introduit le mot-clé let.
+<div class="language-javascript highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="kd">let</span><span class="w"> </span><span class="nx">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+Une variable déclarer avec let ne peut pas être déclarée à nouveau et sa portée est limitée au bloc dans lequel elle est déclarée.</p>
+<p>Important</p>
+<p>Pour tout nouveau code, il est recommandé d’utiliser let pour déclarer toutes les variables.</p>
+<p>Avec ES6, on dispose également du mot-clè const pour garantir que la déclaration est constante.</p>
+<p>const pi = 3.1416;</p>
+<p>La structure for … of (ES6)</p>
+<p>Une nouvelle structure de contrôle for a été ajoutée avec ES6 pour permettre de parcourir les objets itérables. Il s’agit de la structure for ... of</p>
+<p>for (let v of voyelles) {
+    console.log(v);
+}</p>
+<p>// Affiche
+// a
+// e
+// i
+// o
+// u
+// y</p>
+<p>Les tableaux et les chaînes de caractères sont des objets itérables. Il est donc très facile de les parcourir avec cette nouvelle structure de contrôle.</p>
+<p>for (let i of [1, 2, 3, 4]) {
+    console.log(i);
+}</p>
+<p>for (let l of "Bonjour") {
+    console.log(l);
+}</p>
+<p>Note</p>
+<p>Nous reviendrons dans un chapitre ultérieur sur la notion d’itérateur et nous verrons comment créer nos propres itérateurs.
+Gabarit de chaîne de caractères (ES6)</p>
+<p>ES6 introduit les gabarits de chaîne de caractères (template string) pour formater plus facilement des données dans des chaînes de caractères. Plutôt que d’utiliser l’opérateur + de concaténation :</p>
+<p>let a = 1;
+let b = 2;
+let message = "La somme de " + a + " et de " + b + " est " + (a + b) + ".";</p>
+<p>On peut utiliser le caractère ` pour délimiter la chaîne de caractères et préciser les noms des variables avec ${} :</p>
+<p>let a = 1;
+let b = 2;
+let message = <code>La somme de ${a} et de ${b} est ${a + b}</code>;</p>
+<p>La syntaxe est plus concise et bien plus lisible. La valeur donnée avec ${} peut être une expression complète : un appel de fonction, l’attribut d’un objet…</p>
+<p>let message = <code>La circonférence d'un cercle de rayon 3 est ${(2 * Math.PI * 3).toFixed(3)}</code>;
+console.log(message); // Affiche La circonférence d'un cercle de rayon 3 est 18.850</p>
+<p>L’utilisation du caractère ` pour délimiter une chaîne de caractères permet également d’écrire cette chaîne sur plusieurs lignes :</p>
+<p>let message = <code>Ceci est un message.
+Ce message est sur plusieurs lignes.
+Il sera affiché également sur plusieurs lignes.</code>;</p>
+<p>console.log(message);</p>
+<p>// Affiche :
+// Ceci est un message.
+// Ce message est sur plusieurs lignes.
+// Il sera affiché également sur plusieurs lignes.</p>
+<p>Valeur par défaut des paramètres (ES6)</p>
+<p>Depuis ES6, il est possible de fournir des valeurs par défaut aux paramètres d’une fonction.</p>
+<p>function saluer(qui, message = "Bonjour") {
+    console.log(message, qui);
+}</p>
+<p>saluer("David"); // Affiche Bonjour David
+saluer("David", "Bonsoir"); // Affiche Bonsoir David</p>
+<p>Le paramètre de reste (ES6)</p>
+<p>Avec l’opérateur ..., il est possible de déclarer une liste quelconque de paramètres correspondant au reste des paramètres. Cette liste sera vue comme un tableau à l’intérieur de la fonction</p>
+<p>function additionner(x1, x2, ...autres) {
+    let resultat = x1 + x2;
+    for (let n of autres) {
+        resultat += n;
+    }
+    return resultat;
+}</p>
+<p>console.log(additionner(1, 2));
+// Affiche 3
+console.log(additionner(1, 2, 4));
+// Affiche 7
+console.log(additionner(1, 2, 4, 8));
+// Affiche 15</p>
+<p>Note</p>
+<p>Si une fonction ne prend qu’un paramètre de reste :</p>
+<p>function maFonction(...args) {
+    console.log(args);
+}</p>
+<p>Cela est équivalent à utiliser la variable implicite arguments :</p>
+<p>function maFonction() {
+    console.log(arguments);
+}</p>
+<p>Cependant, le recours à l’opérateur ... dans la signature améliore la compréhension de la fonction.
+La décomposition de tableau (ES6)</p>
+<p>L’opérateur ... sert également à la décomposition de tableau qui permet de passer les paramètres à l’appel d’une fonction sous la forme d’un tableau.</p>
+<p>let args = [2, 3];</p>
+<p>function additionner(x, y) {
+    console.log(x + y);
+}</p>
+<p>additionner(...args); // Affiche 5</p>
+<p>Note</p>
+<p>Auparavant, ce type d’appel était possible en utilisant la méthode apply d’une fonction :</p>
+<p>let args = [2, 3];</p>
+<p>function additionner(x, y) {
+    console.log(x + y);
+}</p>
+<p>additionner.apply(null, args); // Affiche 5</p>
+<p>L’affectation de tableau par décomposition (ES6)</p>
+<p>L’affectation par décomposition (destructuring assignment) permet de réaliser des affectations multiples à partir d’un tableau.</p>
+<p>On peut déclarer un tableau de variables à gauche de l’affectation.</p>
+<p>const tableau = [1, 2, 3];
+let [a, b, c] = tableau;
+console.log(a); // Affiche 1
+console.log(b); // Affiche 2
+console.log(c); // Affiche 3</p>
+<p>Nous pouvons utiliser cette syntaxe pour intervertir la valeur de deux variables.</p>
+<p>let a = 1:
+let b = 2:
+[a, b] = [b, a]; // a vaut 2 et b vaut 1</p>
+<p>Le tableau à gauche de l’affectation peut avoir une taille différent du tableau à droite de l’affectation. Si le tableau à gauche est plus petit, les éléments en plus à droite ne sont pas pris en compte.</p>
+<p>let [a, b] = [1, 2, 3, 4]; // a vaut 1 et b vaut 2</p>
+<p>Si le tableau à gauche de l’affectation est plus grand, les éléments en plus reçoivent la valeur undefined.</p>
+<p>let [a, b, c, d] = [1, 2]; // a vaut 1, b vaut 2, c et d valent undefined</p>
+<p>On peut utiliser l’opérateur de reste ... pour affecter à une variable tous les éléments restant :</p>
+<p>let [a, ...b] = [1, 2, 3, 4]; // a vaut 1 et b vaut [2, 3, 4]</p>
+<p>L’affectation d’objet par décomposition (ES6)</p>
+<p>L’affectation par décomposition (destructuring assignment) permet également de réaliser des affectations multiples à partir d’un objet. Dans ce cas, le nom des variables à gauche de l’affectation correspondent au nom des propriétés de l’objet.</p>
+<p>const personne = {
+    prenom: "David",
+    nom: "Gayerie"
+};</p>
+<p>let {nom, prenom} = personne;
+console.log(prenom); // Affiche David
+console.log(nom); // Affiche Gayerie</p>
+<p>Comme pour l’affectation de tableau par décomposition, on peut spécifier moins de variables à gauche ou plus de variables ou utiliser l’opérateur de reste ... pour affecter les propriétés restantes sous la forme d’un nouvel objet.</p>
+<p>const personne = {
+    prenom: "David",
+    nom: "Gayerie",
+    taille: 174
+};</p>
+<p>let {nom, prenom} = personne; // nom vaut "David" et prenom vaut "Gayerie"</p>
+<p>const personne = {
+    nom: "Gayerie",
+};</p>
+<p>let {nom, prenom} = personne; // nom vaut "David" et prenom vaut undefined</p>
+<p>const personne = {
+    prenom: "David",
+    nom: "Gayerie",
+    taille: 174
+};</p>
+<p>let {taille, ...nomComplet} = personne; // taille vaut 174
+                                        // nomComplet vaut {prenom: "David", nom: "Gayerie"}</p>
+<p>L’opérateur d’exponentiation (ES7)</p>
+<p>ECMAScript 7 a introduit l’opérateur d’exponentiation ** qui se comporte comme un appel à Math.pow.</p>
+<p>const carre = 4 ** 2; // produit 16
+const cube = 4 ** 3; // produit 64</p>
+<p>Le code ci-dessus est strictement équivalent à</p>
+<p>const carre = Math.pow(4, 2); // produit 16
+const cube = Math.pow(4, 3); // produit 64</p>
+<p>Programmation asynchrone avec async et await (ES7)</p>
+<p>ECMAScript 7 a ajouté les mots-clés aync et await pour faciliter la programmation asynchrone. Nous verrons plus en détail l’utilisation de ces mots-clés dans un chapitre ultérieur.
+Opérateur de coalescence des valeurs nulles (ES11)</p>
+<p>ECMAScript 11 a introduit l’opérateur ?? qui est appelé l’opérateur de coalescence des valeurs nulles (nullish coalescing operator). Il permet de fournir une valeur alternative lorsqu’une expression vaut null ou undefined.</p>
+<p>let x = null ?? "valeur par défaut";      // x vaut "valeur par défaut"
+let y = undefined ?? "valeur par défaut"; // y vaut "valeur par défaut"
+let z = "hello" ?? "valeur par défaut";   // z vaut "hello"</p>
+<p>Avant l’apparition de cette opérateur, les développeurs JavaScript avaient l’habitude d’utiliser l’opérateur logique || pour réaliser un traitement similaire :</p>
+<p>let x = null || "valeur par défaut";      // x vaut "valeur par défaut"
+let y = undefined || "valeur par défaut"; // y vaut "valeur par défaut"
+let z = "hello" || "valeur par défaut";   // z vaut "hello"</p>
+<p>Cependant les deux opérateurs ne sont pas identiques dans leur comportement. L’opérateur logique || retourne l’opérande de droite si l’opérande de gauche est faux. Or, en JavaScript, il n’y a pas que null et undefined qui s’évaluent à faux.</p>
+<p>let m = false || "valeur par défaut"; // x vaut "valeur par défaut"
+let n = false ?? "valeur par défaut"; // y vaut false</p>
+<p>let x = 0 || "valeur par défaut";  // x vaut "valeur par défaut"
+let y = 0 ?? "valeur par défaut";  // y vaut 0</p>
+<p>let w = "" || "valeur par défaut"; // x vaut "valeur par défaut"
+let z = "" ?? "valeur par défaut"; // y vaut ""</p>
+<p>Chaînage optionnel (ES11)</p>
+<p>Il est très courant de chaîner les références pour une meilleure lisibilité du code :</p>
+<p>let x = personne.adresse.rue;</p>
+<p>Le problème avec le code ci-dessus, c’est que nous devons être sûr que la propriété adresse existe et possède une valeur définie sinon cette expression échouera avec une erreur du type :</p>
+<p>TypeError: Cannot read property 'adresse' of undefined</p>
+<p>Pour écrire du code robuste, nous pouvons vérifier préalablement que cette propriété existe ou, avec ES11, nous pouvons utiliser l’opérateur de chaînage optionel ?. :</p>
+<p>const x = personne.adresse?.rue;</p>
+<p>Si adresse vaut null ou undefined, l’évaluation de l’expression s’arrête sans erreur et produit la valeur undefined.</p>
+<p>const personne = {};</p>
+<p>console.log(personne.adresse?.rue); // Affiche "undefined"</p>
+<p>Il est également possible d’utiliser cet opérateur pour l’appel de méthode. Si la méthode n’existe pas, l’expression produit également la valeur undefined.</p>
+<p>const personne = {
+    parler: function() {
+        return "bonjour";
+    }
+};</p>
+<p>console.log(personne.parler?.()); // Affiche "bonjour"
+console.log(personne.crier?.()); // Affiche "undefined"</p>
+<p>Prudence</p>
+<p>Le chaînage optionnel ne s’applique pas sur la première référence de la chaîne.</p>
+<p>console.log(personne?.nom);</p>
+<p>L’utilisation de l’opérateur ?. sur la variable personne n’a aucun effet. Si personne vaut null ou undefined, ce programme échouera :</p>
+<p>Uncaught ReferenceError: personne is not defined</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.tracking", "navigation.sections", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate", "content.code.select", "content.tabs.link", "content.tooltips", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../../assets/external/unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>
